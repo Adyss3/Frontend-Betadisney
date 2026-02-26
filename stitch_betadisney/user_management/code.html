@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management - Admin Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden">
+<div class="relative flex min-h-screen w-full flex-col group/design-root">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e5e7eb] dark:border-b-[#2a3441] bg-white dark:bg-[#1a222c] px-6 py-3 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="size-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">grid_view</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-[#111418] dark:text-white">Admin Dashboard</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium leading-normal text-[#6b7280] dark:text-[#9ca3af] hover:text-primary dark:hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium leading-normal text-[#6b7280] dark:text-[#9ca3af] hover:text-primary dark:hover:text-primary transition-colors" href="#">Products</a>
+<a class="text-sm font-medium leading-normal text-[#6b7280] dark:text-[#9ca3af] hover:text-primary dark:hover:text-primary transition-colors" href="#">Orders</a>
+<a class="text-sm font-bold leading-normal text-primary" href="#">Users</a>
+<a class="text-sm font-medium leading-normal text-[#6b7280] dark:text-[#9ca3af] hover:text-primary dark:hover:text-primary transition-colors" href="#">Settings</a>
+</nav>
+<div class="h-6 w-px bg-[#e5e7eb] dark:bg-[#2a3441] hidden md:block"></div>
+<div class="flex items-center gap-3">
+<button class="relative flex items-center justify-center rounded-full size-10 text-[#6b7280] dark:text-[#9ca3af] hover:bg-gray-100 dark:hover:bg-[#2a3441] transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-white dark:border-[#1a222c]"></span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-gray-100 dark:ring-[#2a3441]" data-alt="Admin user profile picture showing a smiling professional" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDx-gL6DXrs7gAYm59RwEk_zXnBntpy4JSyjmTKGH5G2aEVdYZljPcvGikhgKu6qzB1s0vGT6Ak5wUA7oaMG0rdPLoVgUYGlMYtrz6dgLwvESgPoAgizEsiVXU__QOBjZgRZ03zZQtu56xvr-gZH7NdPmhVmAWguBbfId0EbzMZePITcbHq5u_bpV87A4s6HssQX0579AKTaXjfLcWi606UC_z4teBDwtwelUTGGSbyCPrM7eMblKKehpMT-HQ6YttaxhzzLQjRhsVX");'></div>
+</div>
+</div>
+</header>
+<main class="layout-container flex h-full grow flex-col px-4 md:px-10 py-8 mx-auto w-full max-w-[1200px]">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+<div class="flex min-w-72 flex-col gap-1">
+<h1 class="text-3xl md:text-4xl font-extrabold leading-tight tracking-[-0.033em] text-[#111418] dark:text-white">User Management</h1>
+<p class="text-[#6b7280] dark:text-[#9ca3af] text-base font-normal leading-normal">Total Users: 1,240</p>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white hover:bg-primary/90 transition-all text-sm font-bold leading-normal tracking-[0.015em] shadow-md shadow-primary/20">
+<span class="material-symbols-outlined mr-2 text-[20px]">add</span>
+<span class="truncate">Add New User</span>
+</button>
+</div>
+<!-- Toolbar & Controls -->
+<div class="mb-6 flex flex-col md:flex-row gap-4 items-center justify-between bg-white dark:bg-[#1a222c] p-4 rounded-xl shadow-sm border border-[#e5e7eb] dark:border-[#2a3441]">
+<!-- Left: Search & Filters -->
+<div class="flex flex-col md:flex-row gap-4 w-full md:w-auto flex-1">
+<div class="relative flex-1 max-w-md">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-[#9ca3af] material-symbols-outlined">search</span>
+<input class="form-input w-full rounded-lg border border-[#e5e7eb] dark:border-[#374151] bg-[#f9fafb] dark:bg-[#111827] px-10 py-2.5 text-sm text-[#111418] dark:text-white placeholder:text-[#9ca3af] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Search by Name, Email, or ID"/>
+</div>
+<div class="flex gap-4">
+<div class="relative min-w-[160px]">
+<select class="appearance-none w-full rounded-lg border border-[#e5e7eb] dark:border-[#374151] bg-[#f9fafb] dark:bg-[#111827] px-4 py-2.5 pr-8 text-sm text-[#111418] dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none cursor-pointer">
+<option value="">All Statuses</option>
+<option value="active">Active</option>
+<option value="suspended">Suspended</option>
+<option value="pending">Pending</option>
+</select>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-[#9ca3af] pointer-events-none material-symbols-outlined text-lg">expand_more</span>
+</div>
+<div class="relative min-w-[160px]">
+<select class="appearance-none w-full rounded-lg border border-[#e5e7eb] dark:border-[#374151] bg-[#f9fafb] dark:bg-[#111827] px-4 py-2.5 pr-8 text-sm text-[#111418] dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none cursor-pointer">
+<option value="newest">Newest First</option>
+<option value="oldest">Oldest First</option>
+<option value="a-z">Name (A-Z)</option>
+<option value="z-a">Name (Z-A)</option>
+</select>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-[#9ca3af] pointer-events-none material-symbols-outlined text-lg">sort</span>
+</div>
+</div>
+</div>
+<!-- Right: Actions -->
+<button class="flex items-center justify-center h-10 px-4 rounded-lg border border-[#e5e7eb] dark:border-[#374151] bg-white dark:bg-[#1a222c] text-[#111418] dark:text-white hover:bg-gray-50 dark:hover:bg-[#242f3d] transition-colors text-sm font-medium w-full md:w-auto">
+<span class="material-symbols-outlined mr-2 text-[20px]">download</span>
+                    Export CSV
+                </button>
+</div>
+<!-- Users Table -->
+<div class="bg-white dark:bg-[#1a222c] rounded-xl shadow-sm border border-[#e5e7eb] dark:border-[#2a3441] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#f9fafb] dark:bg-[#111827] border-b border-[#e5e7eb] dark:border-[#2a3441]">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#6b7280] dark:text-[#9ca3af]">User ID</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#6b7280] dark:text-[#9ca3af]">Name</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#6b7280] dark:text-[#9ca3af]">Email</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#6b7280] dark:text-[#9ca3af]">Joined Date</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#6b7280] dark:text-[#9ca3af]">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#6b7280] dark:text-[#9ca3af] text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e5e7eb] dark:divide-[#2a3441]">
+<!-- Row 1 -->
+<tr class="hover:bg-[#f3f4f6] dark:hover:bg-[#242f3d] transition-colors group">
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af] font-mono">#USR-1024</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-gray-200 bg-center bg-cover" data-alt="Portrait of Jane Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKez0_lQFqO0LxwbkN9UBkI8wc1_-KFWAM-WyAmkHcsnUJNGpI5xUCfbzYiEN30ot1EavPaPGVwGUDSE-86-nHGGQ1GNp7TQDA5eaNfhCWLP1CSjcgaQioptpYs0pWYES5ZCK1Vex9cBd3y4yRVpP6xs7NIxO4zydXmKwyu0NriIcAd6ILhYhrN5L2SQFArK_vqojpJpSBDuxY3dE6XJ31pqVz5-19bKheREWJnJNjkCivaDo5ejP5VUbi3F8yep6os6apazNFlmSt");'></div>
+<span class="text-sm font-semibold text-[#111418] dark:text-white">Jane Doe</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#111418] dark:text-gray-300">jane.doe@example.com</td>
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af]">Oct 24, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded text-gray-400 hover:text-primary hover:bg-primary/10 transition-colors" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition-colors" title="Edit User">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-red-500 hover:bg-red-500/10 transition-colors" title="Suspend Account">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#f3f4f6] dark:hover:bg-[#242f3d] transition-colors group">
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af] font-mono">#USR-1023</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-gray-200 bg-center bg-cover" data-alt="Portrait of John Smith" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC536YgEtqqz2gSRVfFo18VrV0dGrvPvrt56I4IYEjf2YFF9sHhwlHuR-3hovOUx_lwwGlqAbTTA4qgMs0tU-pik30z6FyuY0Y541VQ3R2ammLL5loTRyWnjEfCBxypHZ-KR7-aKGEL4EU2AD-E2sxKq7SQDThBv3QoBomjknInQllBxbmT539YcetQSp0F3LaEjU1u8zCbvK_NfGA0U5S6DidKYZSLO5xlyALwdUarWaa_Il9pkTaOZ6gl0Mgi0UhKjRGkQ16O8FHj");'></div>
+<span class="text-sm font-semibold text-[#111418] dark:text-white">John Smith</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#111418] dark:text-gray-300">john.smith@example.com</td>
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af]">Oct 23, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+                                        Suspended
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded text-gray-400 hover:text-primary hover:bg-primary/10 transition-colors" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition-colors" title="Edit User">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-green-500 hover:bg-green-500/10 transition-colors" title="Activate Account">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#f3f4f6] dark:hover:bg-[#242f3d] transition-colors group">
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af] font-mono">#USR-1022</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">AJ</div>
+<span class="text-sm font-semibold text-[#111418] dark:text-white">Alice Johnson</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#111418] dark:text-gray-300">alice.j@example.com</td>
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af]">Oct 22, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded text-gray-400 hover:text-primary hover:bg-primary/10 transition-colors" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition-colors" title="Edit User">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-red-500 hover:bg-red-500/10 transition-colors" title="Suspend Account">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-[#f3f4f6] dark:hover:bg-[#242f3d] transition-colors group">
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af] font-mono">#USR-1021</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-gray-200 bg-center bg-cover" data-alt="Portrait of Bob Brown" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvnYKV5orMyO2hZaN2nQGFdks1w0HN7mH459qLn_ewemMpAnUQYsYKI3Dr1inMkzf0zKT2lKBk7KEsnh70V0jyDm1EH5h98TrqlKkKLRNmMZIZ36gier1TC9xVNVvvDWZ1Tx0b1EEsC_IzlEU7sxOXaltkslKLthnrWX1lBqLC1XWSXLwkIUzSIp2EbA3UY5vWymnohSidPlIM5sj4_B-_msyDZx_nV94DtePI166ZOAJzochawFDw7q95GzSxnLe8yUDNIaGJRUms");'></div>
+<span class="text-sm font-semibold text-[#111418] dark:text-white">Bob Brown</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#111418] dark:text-gray-300">bob.brown@example.com</td>
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af]">Oct 21, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded text-gray-400 hover:text-primary hover:bg-primary/10 transition-colors" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition-colors" title="Edit User">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-red-500 hover:bg-red-500/10 transition-colors" title="Suspend Account">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-[#f3f4f6] dark:hover:bg-[#242f3d] transition-colors group">
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af] font-mono">#USR-1020</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm dark:bg-purple-900/30 dark:text-purple-400">CD</div>
+<span class="text-sm font-semibold text-[#111418] dark:text-white">Charlie Davis</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#111418] dark:text-gray-300">charlie.d@example.com</td>
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af]">Oct 20, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded text-gray-400 hover:text-primary hover:bg-primary/10 transition-colors" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition-colors" title="Edit User">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-green-500 hover:bg-green-500/10 transition-colors" title="Approve Account">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-[#f3f4f6] dark:hover:bg-[#242f3d] transition-colors group">
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af] font-mono">#USR-1019</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-gray-200 bg-center bg-cover" data-alt="Portrait of Diana Evans" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD7onK1wCM6c8JSeKNNROmZ3a5JljH_x1rTqEkEh7mQ9iXnkwBc00OjTPDbgjFwa6ji4ej76xjslp_j6Evss73S33sruWLgYGI7jxCXFICZuw7ODV4ha629UtPFQPtkoB1hsrCmVqaZLDTw4Aqs3UuneraC7mh3MMEHBPYPW-PDCqfcOkzpG_K4LrZdLoKQh18Q4Uw4y95Eqvo8YCgl99_fFumX-FinjQfHSKM7pU2mkrwbXSZ9v22TnOyS0jPZ-xAUBcGN6YDl3EE9");'></div>
+<span class="text-sm font-semibold text-[#111418] dark:text-white">Diana Evans</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#111418] dark:text-gray-300">diana.e@example.com</td>
+<td class="px-6 py-4 text-sm text-[#6b7280] dark:text-[#9ca3af]">Oct 19, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded text-gray-400 hover:text-primary hover:bg-primary/10 transition-colors" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition-colors" title="Edit User">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-red-500 hover:bg-red-500/10 transition-colors" title="Suspend Account">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between border-t border-[#e5e7eb] dark:border-[#2a3441] bg-[#f9fafb] dark:bg-[#111827] px-6 py-3">
+<div class="text-sm text-[#6b7280] dark:text-[#9ca3af]">
+                        Showing <span class="font-medium text-[#111418] dark:text-white">1</span> to <span class="font-medium text-[#111418] dark:text-white">6</span> of <span class="font-medium text-[#111418] dark:text-white">1,240</span> results
+                    </div>
+<div class="flex items-center gap-2">
+<button class="flex size-8 items-center justify-center rounded-lg border border-[#e5e7eb] dark:border-[#374151] bg-white dark:bg-[#1a222c] text-[#6b7280] dark:text-[#9ca3af] hover:bg-gray-50 dark:hover:bg-[#242f3d] disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="flex size-8 items-center justify-center rounded-lg bg-primary text-white text-sm font-medium shadow-sm">1</button>
+<button class="flex size-8 items-center justify-center rounded-lg border border-[#e5e7eb] dark:border-[#374151] bg-white dark:bg-[#1a222c] text-[#6b7280] dark:text-[#9ca3af] hover:bg-gray-50 dark:hover:bg-[#242f3d] text-sm font-medium transition-colors">2</button>
+<button class="flex size-8 items-center justify-center rounded-lg border border-[#e5e7eb] dark:border-[#374151] bg-white dark:bg-[#1a222c] text-[#6b7280] dark:text-[#9ca3af] hover:bg-gray-50 dark:hover:bg-[#242f3d] text-sm font-medium transition-colors">3</button>
+<span class="flex size-8 items-center justify-center text-[#6b7280] dark:text-[#9ca3af]">...</span>
+<button class="flex size-8 items-center justify-center rounded-lg border border-[#e5e7eb] dark:border-[#374151] bg-white dark:bg-[#1a222c] text-[#6b7280] dark:text-[#9ca3af] hover:bg-gray-50 dark:hover:bg-[#242f3d] text-sm font-medium transition-colors">12</button>
+<button class="flex size-8 items-center justify-center rounded-lg border border-[#e5e7eb] dark:border-[#374151] bg-white dark:bg-[#1a222c] text-[#6b7280] dark:text-[#9ca3af] hover:bg-gray-50 dark:hover:bg-[#242f3d]">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

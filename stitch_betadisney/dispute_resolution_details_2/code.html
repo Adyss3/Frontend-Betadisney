@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dispute Resolution Details</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "card-light": "#ffffff",
+                        "card-dark": "#18232e",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex flex-col overflow-x-hidden">
+<!-- Breadcrumbs & Header -->
+<header class="w-full bg-card-light dark:bg-card-dark border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-4 text-sm">
+<a class="text-slate-500 hover:text-primary dark:text-slate-400 transition-colors" href="#">Dashboard</a>
+<span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+<a class="text-slate-500 hover:text-primary dark:text-slate-400 transition-colors" href="#">Disputes</a>
+<span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">DSP-8902</span>
+</div>
+<!-- Page Heading & Actions -->
+<div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h1 class="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white">
+                            Dispute #DSP-8902
+                        </h1>
+<span class="inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-900/30 px-2.5 py-0.5 text-xs font-bold text-yellow-800 dark:text-yellow-500">
+                            Action Required
+                        </span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-base font-medium">
+                        Reason: Broken Screen on Arrival
+                    </p>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+<span class="truncate">Decline</span>
+</button>
+<button class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary hover:bg-blue-600 text-white text-sm font-bold transition-colors shadow-sm shadow-blue-200 dark:shadow-none">
+<span class="material-symbols-outlined text-[20px]">credit_card</span>
+<span class="truncate">Offer Store Credit</span>
+</button>
+<button class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary hover:bg-blue-600 text-white text-sm font-bold transition-colors shadow-sm shadow-blue-200 dark:shadow-none">
+<span class="material-symbols-outlined text-[20px]">undo</span>
+<span class="truncate">Issue Refund</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- LEFT COLUMN: Context & Chat (Span 2) -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Original Claim Card -->
+<div class="bg-card-light dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 bg-red-50 dark:bg-red-900/20 rounded-lg text-red-600 dark:text-red-400">
+<span class="material-symbols-outlined">report_problem</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Original Claim</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">Filed on Oct 12, 10:00 AM</p>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 mb-6">
+<p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                                "The package arrived damaged. The outer box looked fine, but when I opened it, the screen of the iPhone was completely cracked. I haven't even turned it on yet. Please see the attached photos."
+                            </p>
+</div>
+<!-- Evidence Grid -->
+<div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Evidence Attached</h3>
+<div class="flex flex-wrap gap-4">
+<div class="relative group cursor-pointer overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700 w-32 h-32 bg-slate-100 dark:bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-105" data-alt="Cracked smartphone screen close up" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuByVMUUvoG3OixnGEfHsDcXxbUeSbJ2jsAa9DFcMycfreXhzqE6wcJqteEH52o6LYbxuJrVre_d3wXHSN1CQp2IQDghgRWQXxBInINGEzuGgyAI79kihUe6cYVrw9qtD5yY-IuFAszSniToXb2b_yHlVZfma6psvUnZX5cUi9B1oCnmzxwqEUsOTro2yIbMvRk3FIgI5k75Oq_L10QlN-3Ijx8NpOSf3k-4fP0xsbF920t9MRFL2-68Hmq4SZ71zT0yIuWt3QFIVKmz");'>
+</div>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 transition-opacity">visibility</span>
+</div>
+</div>
+<div class="relative group cursor-pointer overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700 w-32 h-32 bg-slate-100 dark:bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-105" data-alt="Damaged shipping box corner" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjr_r_oKhntXT8uWhzfi0OnmfVBwLpxOfJPmqLvL6wTl3AsPWfGIGBhCwLKWnUhUWwql45iUK1LTYqapINMxrdF5-aDvMmCgpTjWKcRhnqw72gB1xR824bUqN0-XD2UV9qSKscH7dYBE6bp0foIRc2qXoOXnOEZ66GlLrT5A2DacoLA9NFaxmVA2Luekt1UqzyyvquxMwYYVezRcGGF2vI6R4JQNFCvjF65_R2ESiROhXMbA5HHBFB5HpIK1dy8IuppDFD886CEYrw");'>
+</div>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 transition-opacity">visibility</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Communication Thread -->
+<div class="flex flex-col bg-card-light dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden h-[600px]">
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-slate-800/30">
+<h2 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400">forum</span>
+                            Communication Log
+                        </h2>
+<button class="text-xs font-medium text-primary hover:text-blue-600 dark:hover:text-blue-400">View Full History</button>
+</div>
+<!-- Messages Area -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 bg-white dark:bg-[#151f28]">
+<!-- System Message -->
+<div class="flex justify-center">
+<span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs rounded-full font-medium">
+                                Dispute Created — Oct 12, 10:00 AM
+                            </span>
+</div>
+<!-- Admin Message -->
+<div class="flex flex-col items-end gap-2">
+<div class="flex items-center gap-2">
+<span class="text-xs text-slate-400">Admin (You) • Oct 12, 11:30 AM</span>
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold">A</div>
+</div>
+<div class="max-w-[80%] p-4 bg-primary text-white rounded-2xl rounded-tr-sm">
+<p class="text-sm">Hello, sorry to hear about the damage. Could you please provide photos of the outer shipping box as well? We need to verify if the damage occurred during transit.</p>
+</div>
+</div>
+<!-- Customer Message -->
+<div class="flex flex-col items-start gap-2">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-indigo-500 flex items-center justify-center text-white text-[10px] font-bold">JD</div>
+<span class="text-xs text-slate-400">John Doe • Oct 12, 02:15 PM</span>
+</div>
+<div class="max-w-[80%] p-4 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-2xl rounded-tl-sm border border-slate-200 dark:border-slate-700">
+<p class="text-sm mb-3">Here is the picture of the box. It looks squashed on one corner.</p>
+<div class="rounded-lg overflow-hidden w-40 h-28 bg-cover bg-center" data-alt="Cardboard box with dented corner" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2CNW4WsLb-VO7Y8NIRpEvDq3NVp-tiItBCkQhm0pI7Ivr6iOZcDKV6csLQ50ZdlfXpzyIpRyQ243ixVHET5rRoox3RNoXVQwfdssMBZbSqblfpMxmEWkCvNn7lmmVtBMXctu1CmaqCTT2GN0On8UAT_qWccoh3GsAu0KUMy7Svqhtm7wal3w0mlKf_5_VDxB1Ej-Qs6zkIgvGfEwfuA2CFxrd8stoUCALDox0BJjKUYUBr7d4L0ysnymrruASKdjEOV747junlEuI");'>
+</div>
+</div>
+</div>
+<!-- Internal Note -->
+<div class="flex flex-col items-end gap-2">
+<div class="flex items-center gap-2">
+<span class="text-xs text-yellow-600 dark:text-yellow-500 font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] icon-fill">lock</span> Internal Note
+                                </span>
+<span class="text-xs text-slate-400">• Oct 12, 02:45 PM</span>
+</div>
+<div class="max-w-[80%] p-4 bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-900/30 text-slate-800 dark:text-slate-200 rounded-2xl rounded-tr-sm">
+<p class="text-sm">The damage seems consistent with the claim. Shipping insurance should cover this. I recommend approving the refund once we confirm the serial number.</p>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-card-light dark:bg-card-dark border-t border-slate-200 dark:border-slate-800">
+<!-- Toggle for internal note -->
+<div class="flex items-center gap-4 mb-3">
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="relative inline-flex h-5 w-9 items-center rounded-full bg-slate-200 dark:bg-slate-700 transition-colors peer-checked:bg-yellow-400">
+<input class="peer sr-only" type="checkbox"/>
+<span class="inline-block h-3 w-3 transform rounded-full bg-white transition translate-x-1 peer-checked:translate-x-5 peer-checked:bg-yellow-600"></span>
+</div>
+<span class="text-xs font-semibold text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200">Internal Note</span>
+</label>
+<button class="text-xs font-medium text-slate-500 hover:text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+                                Canned Responses
+                            </button>
+</div>
+<div class="relative">
+<textarea class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-3 pr-12 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary resize-none h-24" placeholder="Type your reply here..."></textarea>
+<div class="absolute bottom-3 right-3 flex gap-2">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+<button class="bg-primary hover:bg-blue-600 text-white rounded-md p-1.5 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Sidebar (Span 1) -->
+<div class="space-y-6">
+<!-- Status Control -->
+<div class="bg-card-light dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-4">
+<label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+                        Dispute Status
+                    </label>
+<div class="relative">
+<select class="w-full appearance-none bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg pl-4 pr-10 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/50">
+<option value="awaiting_response">Awaiting Customer Response</option>
+<option selected="" value="under_review">Under Review</option>
+<option value="proposed">Resolution Proposed</option>
+<option value="closed">Closed</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between text-sm">
+<span class="text-slate-500 dark:text-slate-400">Assigned to</span>
+<div class="flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-white text-[8px] font-bold">A</div>
+<span class="font-medium text-slate-900 dark:text-white">Admin (You)</span>
+</div>
+</div>
+</div>
+<!-- Customer Profile -->
+<div class="bg-card-light dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white">Customer Profile</h3>
+<button class="text-primary hover:bg-primary/10 rounded p-1">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-lg font-bold shadow-md">
+                            JD
+                        </div>
+<div>
+<p class="text-base font-bold text-slate-900 dark:text-white leading-tight">John Doe</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">john.doe@example.com</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 mb-4">
+<div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg text-center">
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Lifetime Value</p>
+<p class="text-sm font-black text-slate-900 dark:text-white">$2,450</p>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg text-center">
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Segment</p>
+<span class="inline-flex items-center rounded-full bg-purple-100 dark:bg-purple-900/30 px-2 py-0.5 text-xs font-bold text-purple-700 dark:text-purple-400">
+                                VIP
+                            </span>
+</div>
+</div>
+<div class="border-t border-slate-100 dark:border-slate-800 pt-3">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2">Previous Disputes</p>
+<div class="flex items-center gap-2 text-xs">
+<span class="material-symbols-outlined text-[16px] text-green-500">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300">DSP-1022 (Closed - Resolved)</span>
+</div>
+</div>
+</div>
+<!-- Order Details -->
+<div class="bg-card-light dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white">Order Summary</h3>
+<a class="text-xs font-medium text-primary hover:underline" href="#">#ORD-2245</a>
+</div>
+<div class="flex gap-3 mb-4">
+<div class="h-16 w-16 bg-slate-100 dark:bg-slate-800 rounded-lg bg-cover bg-center shrink-0 border border-slate-200 dark:border-slate-700" data-alt="iPhone 14 Pro Max product shot" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBu5cobNecV5kcz8aHAmiIVPONtE2Eov0cR1Lcnh2sK2U8AKnScJD0WiweySQkjc6u0yBbclehMCsCqSWNzVgWluYISXWmc8r-51cf0r775xG_jSTCtz6m-g0UI7c5gSFIXCMKWomGHSyXTnu_gb6_y6TndE-Lyy8jHyE72hAy8bRK0I7SzFy5Ac-i7I4L8kuKqmy26E0-UuIraaDPhlkexf8iFNB0rulUbdK7_HQtMiA7ST2iPXZ9ynKOMQQ7bZw5iUgfBOC3D2YWf");'>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-sm font-bold text-slate-900 dark:text-white line-clamp-1">iPhone 14 Pro Max</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Space Black | 256GB</p>
+<p class="text-sm font-medium text-slate-900 dark:text-white">$1,199.00</p>
+</div>
+</div>
+<div class="space-y-2 text-sm border-t border-slate-100 dark:border-slate-800 pt-3">
+<div class="flex justify-between">
+<span class="text-slate-500 dark:text-slate-400">Purchased</span>
+<span class="text-slate-900 dark:text-white font-medium">Oct 05, 2023</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-500 dark:text-slate-400">Shipped</span>
+<span class="text-slate-900 dark:text-white font-medium">Oct 07, 2023</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-500 dark:text-slate-400">Status</span>
+<span class="text-green-600 dark:text-green-400 font-bold text-xs bg-green-50 dark:bg-green-900/20 px-2 py-0.5 rounded-full">DELIVERED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

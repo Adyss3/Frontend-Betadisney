@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catalog Screen - E-commerce</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-hover": "#116acb",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2632",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for sidebar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col transition-colors duration-200">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark shadow-sm">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16 gap-4">
+<!-- Logo -->
+<div class="flex items-center gap-2 cursor-pointer flex-shrink-0">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 30.5736C16.7203 29.8826 20.2244 29.4783 24 29.4783C27.7756 29.4783 31.2797 29.8826 34.1739 30.5736C36.9144 31.2278 39.9967 32.7669 41.3563 33.8352L24.8486 7.36089C24.4571 6.73303 23.5429 6.73303 23.1514 7.36089L6.64374 33.8352C8.00331 32.7669 11.0856 31.2278 13.8261 30.5736Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M39.998 35.764C39.9944 35.7463 39.9875 35.7155 39.9748 35.6706C39.9436 35.5601 39.8949 35.4259 39.8346 35.2825C39.8168 35.2403 39.7989 35.1993 39.7813 35.1602C38.5103 34.2887 35.9788 33.0607 33.7095 32.5189C30.9875 31.8691 27.6413 31.4783 24 31.4783C20.3587 31.4783 17.0125 31.8691 14.2905 32.5189C12.0012 33.0654 9.44505 34.3104 8.18538 35.1832C8.17384 35.2075 8.16216 35.233 8.15052 35.2592C8.09919 35.3751 8.05721 35.4886 8.02977 35.589C8.00356 35.6848 8.00039 35.7333 8.00004 35.7388C8.00004 35.739 8 35.7393 8.00004 35.7388C8.00004 35.7641 8.0104 36.0767 8.68485 36.6314C9.34546 37.1746 10.4222 37.7531 11.9291 38.2772C14.9242 39.319 19.1919 40 24 40C28.8081 40 33.0758 39.319 36.0709 38.2772C37.5778 37.7531 38.6545 37.1746 39.3151 36.6314C39.9006 36.1499 39.9857 35.8511 39.998 35.764ZM4.95178 32.7688L21.4543 6.30267C22.6288 4.4191 25.3712 4.41909 26.5457 6.30267L43.0534 32.777C43.0709 32.8052 43.0878 32.8338 43.104 32.8629L41.3563 33.8352C43.104 32.8629 43.1038 32.8626 43.104 32.8629L43.1051 32.865L43.1065 32.8675L43.1101 32.8739L43.1199 32.8918C43.1276 32.906 43.1377 32.9246 43.1497 32.9473C43.1738 32.9925 43.2062 33.0545 43.244 33.1299C43.319 33.2792 43.4196 33.489 43.5217 33.7317C43.6901 34.1321 44 34.9311 44 35.7391C44 37.4427 43.003 38.7775 41.8558 39.7209C40.6947 40.6757 39.1354 41.4464 37.385 42.0552C33.8654 43.2794 29.133 44 24 44C18.867 44 14.1346 43.2794 10.615 42.0552C8.86463 41.4464 7.30529 40.6757 6.14419 39.7209C4.99695 38.7775 3.99999 37.4427 3.99999 35.7391C3.99999 34.8725 4.29264 34.0922 4.49321 33.6393C4.60375 33.3898 4.71348 33.1804 4.79687 33.0311C4.83898 32.9556 4.87547 32.8935 4.9035 32.8471C4.91754 32.8238 4.92954 32.8043 4.93916 32.7889L4.94662 32.777L4.95178 32.7688ZM35.9868 29.004L24 9.77997L12.0131 29.004C12.4661 28.8609 12.9179 28.7342 13.3617 28.6282C16.4281 27.8961 20.0901 27.4783 24 27.4783C27.9099 27.4783 31.5719 27.8961 34.6383 28.6282C35.082 28.7342 35.5339 28.8609 35.9868 29.004Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white">ShopEase</h2>
+</div>
+<!-- Search -->
+<div class="hidden md:flex flex-1 max-w-lg">
+<div class="relative w-full group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border-none rounded-lg leading-5 bg-background-light dark:bg-background-dark text-slate-900 dark:text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm" placeholder="Search for products, brands and more..." type="text"/>
+</div>
+</div>
+<!-- Navigation -->
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex gap-6">
+<a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Men</a>
+<a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Women</a>
+<a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Electronics</a>
+<a class="text-sm font-medium text-red-500 hover:text-red-600 transition-colors" href="#">Sale</a>
+</nav>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold bg-primary text-white hover:bg-primary-hover transition-colors shadow-sm">
+<span>Login</span>
+</button>
+<button class="relative p-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark text-slate-700 dark:text-slate-200 transition-colors">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white ring-2 ring-white dark:ring-surface-dark">2</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile Search (Visible only on small screens) -->
+<div class="md:hidden pb-3">
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border-none rounded-lg leading-5 bg-background-light dark:bg-background-dark text-slate-900 dark:text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary text-sm" placeholder="Search..." type="text"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex-grow max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Left Sidebar (Filters) -->
+<aside class="w-full lg:w-64 flex-shrink-0 hidden lg:block">
+<div class="sticky top-24 space-y-8">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Filters</h3>
+<button class="text-sm text-primary font-medium hover:underline">Clear All</button>
+</div>
+<!-- Category Filter -->
+<div class="space-y-3">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Categories</h4>
+<div class="flex flex-col space-y-2">
+<label class="inline-flex items-center cursor-pointer group">
+<input checked="" class="form-checkbox h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary dark:bg-background-dark dark:border-slate-600" type="checkbox"/>
+<span class="ml-3 text-sm text-slate-600 dark:text-slate-300 group-hover:text-primary transition-colors">Running Shoes</span>
+</label>
+<label class="inline-flex items-center cursor-pointer group">
+<input class="form-checkbox h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary dark:bg-background-dark dark:border-slate-600" type="checkbox"/>
+<span class="ml-3 text-sm text-slate-600 dark:text-slate-300 group-hover:text-primary transition-colors">Training &amp; Gym</span>
+</label>
+<label class="inline-flex items-center cursor-pointer group">
+<input class="form-checkbox h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary dark:bg-background-dark dark:border-slate-600" type="checkbox"/>
+<span class="ml-3 text-sm text-slate-600 dark:text-slate-300 group-hover:text-primary transition-colors">Walking</span>
+</label>
+<label class="inline-flex items-center cursor-pointer group">
+<input class="form-checkbox h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary dark:bg-background-dark dark:border-slate-600" type="checkbox"/>
+<span class="ml-3 text-sm text-slate-600 dark:text-slate-300 group-hover:text-primary transition-colors">Trail Running</span>
+</label>
+</div>
+</div>
+<!-- Price Filter -->
+<div class="space-y-4">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Price Range</h4>
+<div class="relative h-1 w-full bg-slate-200 dark:bg-slate-700 rounded-full mt-6 mb-2">
+<div class="absolute left-[10%] right-[30%] h-full bg-primary rounded-full"></div>
+<div class="absolute left-[10%] top-1/2 -translate-y-1/2 h-4 w-4 bg-white border-2 border-primary rounded-full shadow cursor-pointer hover:scale-110 transition-transform"></div>
+<div class="absolute right-[30%] top-1/2 -translate-y-1/2 h-4 w-4 bg-white border-2 border-primary rounded-full shadow cursor-pointer hover:scale-110 transition-transform"></div>
+</div>
+<div class="flex items-center justify-between text-sm text-slate-600 dark:text-slate-400 font-medium">
+<span>$50</span>
+<span>$300</span>
+</div>
+</div>
+<!-- Brands -->
+<div class="space-y-3">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Brand</h4>
+<div class="flex flex-col space-y-2">
+<label class="inline-flex items-center cursor-pointer">
+<input class="form-checkbox h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary dark:bg-background-dark dark:border-slate-600" type="checkbox"/>
+<span class="ml-3 text-sm text-slate-600 dark:text-slate-300">Nike <span class="text-slate-400 text-xs ml-1">(120)</span></span>
+</label>
+<label class="inline-flex items-center cursor-pointer">
+<input class="form-checkbox h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary dark:bg-background-dark dark:border-slate-600" type="checkbox"/>
+<span class="ml-3 text-sm text-slate-600 dark:text-slate-300">Adidas <span class="text-slate-400 text-xs ml-1">(85)</span></span>
+</label>
+<label class="inline-flex items-center cursor-pointer">
+<input class="form-checkbox h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary dark:bg-background-dark dark:border-slate-600" type="checkbox"/>
+<span class="ml-3 text-sm text-slate-600 dark:text-slate-300">Puma <span class="text-slate-400 text-xs ml-1">(40)</span></span>
+</label>
+<label class="inline-flex items-center cursor-pointer">
+<input class="form-checkbox h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary dark:bg-background-dark dark:border-slate-600" type="checkbox"/>
+<span class="ml-3 text-sm text-slate-600 dark:text-slate-300">New Balance <span class="text-slate-400 text-xs ml-1">(32)</span></span>
+</label>
+</div>
+</div>
+<!-- Rating -->
+<div class="space-y-3">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Rating</h4>
+<div class="space-y-2">
+<label class="flex items-center cursor-pointer gap-3">
+<input class="form-radio h-4 w-4 text-primary border-slate-300 focus:ring-primary dark:bg-background-dark dark:border-slate-600" name="rating" type="radio"/>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+<span class="material-symbols-outlined text-[20px] text-slate-300 dark:text-slate-600">star</span>
+</div>
+<span class="text-sm text-slate-600 dark:text-slate-400">&amp; Up</span>
+</label>
+<label class="flex items-center cursor-pointer gap-3">
+<input class="form-radio h-4 w-4 text-primary border-slate-300 focus:ring-primary dark:bg-background-dark dark:border-slate-600" name="rating" type="radio"/>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+<span class="material-symbols-outlined filled text-[20px]">star</span>
+<span class="material-symbols-outlined text-[20px] text-slate-300 dark:text-slate-600">star</span>
+<span class="material-symbols-outlined text-[20px] text-slate-300 dark:text-slate-600">star</span>
+</div>
+<span class="text-sm text-slate-600 dark:text-slate-400">&amp; Up</span>
+</label>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 min-w-0">
+<!-- Breadcrumbs & Heading -->
+<div class="mb-6">
+<nav aria-label="Breadcrumb" class="flex mb-2">
+<ol class="inline-flex items-center space-x-1 md:space-x-3">
+<li class="inline-flex items-center">
+<a class="inline-flex items-center text-sm font-medium text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white" href="#">Home</a>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-slate-400 text-sm mx-1">chevron_right</span>
+<a class="ml-1 text-sm font-medium text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white md:ml-2" href="#">Men</a>
+</div>
+</li>
+<li aria-current="page">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-slate-400 text-sm mx-1">chevron_right</span>
+<span class="ml-1 text-sm font-medium text-slate-900 md:ml-2 dark:text-white">Running Shoes</span>
+</div>
+</li>
+</ol>
+</nav>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white">Men's Running Shoes</h1>
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Showing 1-12 of 145 results</span>
+</div>
+</div>
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-6 bg-surface-light dark:bg-surface-dark p-4 rounded-lg shadow-sm border border-border-light dark:border-border-dark">
+<!-- Mobile Filter Toggle -->
+<button class="lg:hidden flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 focus:outline-none dark:bg-slate-800 dark:text-slate-300 dark:border-slate-600 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">filter_list</span>
+                        Filters
+                    </button>
+<div class="flex items-center gap-2 ml-auto">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300 whitespace-nowrap" for="sort">Sort by:</label>
+<select class="form-select block w-full pl-3 pr-10 py-2 text-base border-slate-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-lg dark:bg-background-dark dark:border-slate-600 dark:text-white" id="sort">
+<option>Most Popular</option>
+<option>Newest Arrivals</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+</select>
+<div class="hidden sm:flex border-l border-slate-300 dark:border-slate-600 mx-2 h-6"></div>
+<div class="hidden sm:flex gap-1">
+<button class="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-primary">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button class="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400">
+<span class="material-symbols-outlined">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Product Card 1 -->
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-lg border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+<!-- Image -->
+<div class="relative aspect-[4/5] w-full overflow-hidden bg-gray-200">
+<img alt="Red running shoe on a red background" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" data-alt="Red running shoe on a red background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmOiQTreVRZFZm27vRkR-HCCtfmCNhQBtU-i2z4gfrMdyjrUx7ad9oRETLdnG8rj0snMoRl3a46v46JEm90wPZhPPnHVpOexFjRp70vY1v9W5Knh5cFITfR6eja2DEwbrGHUySXoOSD6cyBFsGqR7LlR0uN4H-oe1VjLEUOx01e2FxbsRBP4VE3Xqa_Hq6zEmznBIAHAaskFy8SoD3snjrAS1kIOp4KUMUZz4en7JnY2zmLqiOxfeqp1SRLoFYdPAl5xnhd_tBM8Xr"/>
+<!-- Badges -->
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">Sale</span>
+</div>
+<!-- Overlay Actions -->
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full transition-transform duration-300 group-hover:translate-y-0 bg-gradient-to-t from-black/60 to-transparent flex justify-center gap-3">
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg" title="Add to Wishlist">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg" title="Quick View">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Content -->
+<div class="p-4">
+<h3 class="text-base font-bold text-slate-900 dark:text-white line-clamp-2 mb-1">
+<a href="#">Nike Air Zoom Pegasus 39</a>
+</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined filled text-amber-400 text-[16px]">star</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">4.8</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">(128)</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 line-through">$130.00</span>
+<span class="text-lg font-bold text-primary">$99.99</span>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-white p-2 rounded-lg transition-colors shadow-sm" title="Add to Cart">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-lg border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+<div class="relative aspect-[4/5] w-full overflow-hidden bg-gray-200">
+<img alt="Green and white sneaker floating" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" data-alt="Green and white sneaker floating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrJDrW0qS6odrtzNQmfAR8YHFc3wpVUtBkJNE4EItijh-e4G6YuITlcy6SEpguC5e9msNE82X4_Vc8oAuqokj3PXiWxn697ipo3HcV3nXLDyi4EQ7LLhXYcgxXRhheWPly3DpdYz5ed2fi4GneKz4wp5XSP8ZMkCFUDFULezHiWGmIlUHQNz9Qi7S1tJm5pzYAHER5XEaiX1WK1Imn7FLCf2cC_P136fzjNNI4Y622R2RQVQH9teHv9zVSJtVXYNLMNkK7syPxDsUv"/>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">New</span>
+</div>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full transition-transform duration-300 group-hover:translate-y-0 bg-gradient-to-t from-black/60 to-transparent flex justify-center gap-3">
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="text-base font-bold text-slate-900 dark:text-white line-clamp-2 mb-1">
+<a href="#">Adidas Ultraboost Light</a>
+</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined filled text-amber-400 text-[16px]">star</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">4.9</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">(85)</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-bold text-slate-900 dark:text-white">$190.00</span>
+</div>
+<button class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-primary p-2 rounded-lg transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-lg border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+<div class="relative aspect-[4/5] w-full overflow-hidden bg-gray-200">
+<img alt="Person wearing dark running shoes" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" data-alt="Person wearing dark running shoes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu1JoPBUJgvl5yAZ3hO7Fhi0BfXZGi0j44ne-4CFvC7AEOXCPD3enRYSqsIrTSSmcurKgrxEW27dUBZ-BEOat0Ve4S3Y_A1crW7HSTc5_gqtKahhxlaUpmDYrlA3O8roJZbC2MvuaiqMu_-GkUsCwj6dwZyuwsJGuxpHk8owfyo_m7CH4VpUUe4pO2mcTax2KkTv8CCz6Y5l74TU3lC7k1o2VTeARCwAhgCJEWfTLEIgWlwwPpyoQ6dUbLmvALOfNkXoyCKTYK0ldM"/>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full transition-transform duration-300 group-hover:translate-y-0 bg-gradient-to-t from-black/60 to-transparent flex justify-center gap-3">
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="text-base font-bold text-slate-900 dark:text-white line-clamp-2 mb-1">
+<a href="#">Puma Deviate Nitro 2</a>
+</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined filled text-amber-400 text-[16px]">star</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">4.5</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">(42)</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-bold text-slate-900 dark:text-white">$160.00</span>
+</div>
+<button class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-primary p-2 rounded-lg transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-lg border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+<div class="relative aspect-[4/5] w-full overflow-hidden bg-gray-200">
+<img alt="Pair of pastel colored sneakers" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" data-alt="Pair of pastel colored sneakers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABWPXdEaKJxpPqru_HtrWbIN3XpyAwlWpiGepq3Pwx-kWzRDVf466uo6ed934xrhlD19cRKz_ANyW8bSqk-tZYeH8rkDyXzWfRC0uEekpUhHh3fJDdLeOJuZiFvLNBvi-rT-56S3Eaov2R392ZUkei3DgO-FjGwLh0N2YHo-seS0yd1tpZ874lT-wlKhXvJoZiOxrXVkV-pUKZ-VWGOVfpAfdwBFwmvd17eexOQVzwYXTiLmbMen77JJiB9zFpU07qTgeVZpszVppr"/>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full transition-transform duration-300 group-hover:translate-y-0 bg-gradient-to-t from-black/60 to-transparent flex justify-center gap-3">
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="text-base font-bold text-slate-900 dark:text-white line-clamp-2 mb-1">
+<a href="#">New Balance Fresh Foam X</a>
+</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined filled text-amber-400 text-[16px]">star</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">4.7</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">(56)</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-bold text-slate-900 dark:text-white">$149.99</span>
+</div>
+<button class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-primary p-2 rounded-lg transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-lg border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+<div class="relative aspect-[4/5] w-full overflow-hidden bg-gray-200">
+<img alt="White athletic shoes on black background" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" data-alt="White athletic shoes on black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMUCxdGrqLenLvy32Wqg-pZa0ZaQ_tRWD-C7BixDNUWqjX3dfofZb6-fuPybc_cuBTj8TnNYbX3IwF2Fg91T4sCB-5c0AavwsJLKn7-R4B6HmTRiZp9FBZoITWSGhJJyVjUSztBmrN2D7q-usDggoZeB_BxyQzo_7Fa52BeK8amMpK1pAOhubUBXWNuQZPlP_qPRorOq_X2IdmSl_dNZVRIipaQmIFQgadaEhuD9lQimv9T4RDwRSCZpEkP0z5wRlBiuGEYZMkjG6k"/>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Eco</span>
+</div>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full transition-transform duration-300 group-hover:translate-y-0 bg-gradient-to-t from-black/60 to-transparent flex justify-center gap-3">
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="text-base font-bold text-slate-900 dark:text-white line-clamp-2 mb-1">
+<a href="#">Brooks Ghost 15</a>
+</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined filled text-amber-400 text-[16px]">star</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">4.8</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">(210)</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-bold text-slate-900 dark:text-white">$140.00</span>
+</div>
+<button class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-primary p-2 rounded-lg transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-lg border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+<div class="relative aspect-[4/5] w-full overflow-hidden bg-gray-200">
+<img alt="Pair of bright red sneakers side view" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" data-alt="Pair of bright red sneakers side view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAup1ctKE1In5Zd5JWKa6_qK_ouJ5LgFnjS3qY6meJNacVFkDmmx-YzRjWJhkIFjYsy3ktbbD68G-rrLWnp9QsFvsPjksOWIOGBk-Amh0ESKQlXFAkv5p05_Q-OBN9b8-qo8Kj6K7OPdXcqiYU5ACGTYVpLaGhSKgkrn_xhn3Re6cX5tQBGMECD2jqdXilfstp9CvMED7z8QNndCZc55lAWC9km21jTGqhi9rwiN7ee80fbyTsu-RxGrLYBIydD18H4jU9Or2WseHm9"/>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full transition-transform duration-300 group-hover:translate-y-0 bg-gradient-to-t from-black/60 to-transparent flex justify-center gap-3">
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="text-base font-bold text-slate-900 dark:text-white line-clamp-2 mb-1">
+<a href="#">Asics Novablast 3</a>
+</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined filled text-amber-400 text-[16px]">star</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">4.6</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">(98)</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-bold text-slate-900 dark:text-white">$140.00</span>
+</div>
+<button class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-primary p-2 rounded-lg transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 7 -->
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-lg border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+<div class="relative aspect-[4/5] w-full overflow-hidden bg-gray-200">
+<img alt="Minimalist white sneaker on white" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" data-alt="Minimalist white sneaker on white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACJds10dOC3YIBrThBoRqc6OLJ6qU3JvnGaRQmskMFtN4xvbXGzwXm9Xw6xuLKeD6Gu05HL-O1fMN5ftmPigtOgf9r_WX5ntx6zN-jksUjLC1vU4YMqq4f9-YNagl-yjNkEnDNsddDb2RBljU7-pz9SNv0rHBD-KC_7ExqLH7MgmwPIwQzhzvWLMc_AOVk8Rv-h9M5KlGGyf_TTFFGJikuq7dsZoOyHxz55VTkoG4TOpo7ki1wXERJ2D3ysTR_qAZ59dsdFeOn2-8P"/>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full transition-transform duration-300 group-hover:translate-y-0 bg-gradient-to-t from-black/60 to-transparent flex justify-center gap-3">
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="text-base font-bold text-slate-900 dark:text-white line-clamp-2 mb-1">
+<a href="#">Hoka Clifton 9</a>
+</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined filled text-amber-400 text-[16px]">star</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">4.7</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">(156)</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-bold text-slate-900 dark:text-white">$145.00</span>
+</div>
+<button class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-primary p-2 rounded-lg transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 8 -->
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-lg border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+<div class="relative aspect-[4/5] w-full overflow-hidden bg-gray-200">
+<img alt="Red high top basketball shoe" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" data-alt="Red high top basketball shoe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5qq7APc4T702ptgT7yeOCy034_XLsg-6pF5Z1BbloiumpRnMAzx97uidjDfYgix4ZK78IFAWv37damXfsLW_GTEwI9nTZ3lBCg-j7FQRuVgfyPaWMxUER4_hNXTxabKmaXsKIiJmG4PQjJxyAXPS8bgucuD67HVV-aZetAHGJO5-4jJtqHp-JHQHhHtqlu8PAw1yKM9I3VvVBi7xfXb3j9ii7mb-q9Rquhk8mDtmvymEB-USNRoj01I3khOLkzfcPFku_h8d5rTx3"/>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full transition-transform duration-300 group-hover:translate-y-0 bg-gradient-to-t from-black/60 to-transparent flex justify-center gap-3">
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="text-base font-bold text-slate-900 dark:text-white line-clamp-2 mb-1">
+<a href="#">Under Armour Flow Velociti</a>
+</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined filled text-amber-400 text-[16px]">star</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">4.3</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">(45)</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 line-through">$160.00</span>
+<span class="text-lg font-bold text-primary">$119.99</span>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-white p-2 rounded-lg transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center">
+<nav class="flex items-center gap-2">
+<a class="p-2 rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 disabled:opacity-50" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+</a>
+<a class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold shadow-sm" href="#">1</a>
+<a class="px-4 py-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition-colors text-sm font-medium" href="#">2</a>
+<a class="px-4 py-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition-colors text-sm font-medium" href="#">3</a>
+<span class="px-2 text-slate-400">...</span>
+<a class="px-4 py-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition-colors text-sm font-medium" href="#">12</a>
+<a class="p-2 rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</nav>
+</div>
+</main>
+</div>
+</div>
+<!-- Footer Simplified -->
+<footer class="mt-auto border-t border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark py-12">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1">
+<div class="flex items-center gap-2 mb-4">
+<div class="size-6 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 30.5736C16.7203 29.8826 20.2244 29.4783 24 29.4783C27.7756 29.4783 31.2797 29.8826 34.1739 30.5736C36.9144 31.2278 39.9967 32.7669 41.3563 33.8352L24.8486 7.36089C24.4571 6.73303 23.5429 6.73303 23.1514 7.36089L6.64374 33.8352C8.00331 32.7669 11.0856 31.2278 13.8261 30.5736Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="font-bold text-lg text-slate-900 dark:text-white">ShopEase</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Your premium destination for sports and lifestyle footwear.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">Shop</h4>
+<ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Men's Shoes</a></li>
+<li><a class="hover:text-primary" href="#">Women's Shoes</a></li>
+<li><a class="hover:text-primary" href="#">New Arrivals</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">Support</h4>
+<ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Order Status</a></li>
+<li><a class="hover:text-primary" href="#">Shipping &amp; Returns</a></li>
+<li><a class="hover:text-primary" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-4">Company</h4>
+<ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">About Us</a></li>
+<li><a class="hover:text-primary" href="#">Careers</a></li>
+<li><a class="hover:text-primary" href="#">Sustainability</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-slate-500">© 2024 ShopEase, Inc. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary" href="#"><span class="sr-only">Facebook</span>FB</a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="sr-only">Twitter</span>TW</a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="sr-only">Instagram</span>IG</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Product - Admin Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1A2633",
+                        "border-light": "#dbe0e6",
+                        "border-dark": "#2d3b4a",
+                        "text-primary-light": "#111418",
+                        "text-primary-dark": "#ffffff",
+                        "text-secondary-light": "#617589",
+                        "text-secondary-dark": "#9ca3af",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        /* Custom scrollbar for better look in admin panels */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col transition-colors duration-200">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark px-6 py-3 shadow-sm">
+<div class="flex items-center gap-4 text-text-primary-light dark:text-text-primary-dark">
+<div class="size-8 text-primary flex items-center justify-center rounded-lg bg-primary/10">
+<span class="material-symbols-outlined text-2xl">grid_view</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Admin Dashboard</h2>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full ring-1 ring-border-light dark:ring-border-dark overflow-hidden">
+<div class="text-text-secondary-light dark:text-text-secondary-dark flex border-none bg-background-light dark:bg-background-dark items-center justify-center pl-3">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-text-primary-light dark:text-text-primary-dark focus:outline-0 bg-background-light dark:bg-background-dark h-full placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark px-3 text-sm font-normal leading-normal border-none focus:ring-0" placeholder="Search..." value=""/>
+</div>
+</label>
+<button class="flex items-center justify-center text-text-secondary-light dark:text-text-secondary-dark hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 ring-2 ring-white dark:ring-gray-800 shadow-sm cursor-pointer" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtDJ5lUMnSl7NPAPyYqLGA2Q1DkZ8gampSuHeGmhTUtt50yQf0LiACtgh5CvqE7pYDL4uZ_P05qOGgJQmw5PkzpRJ9GlWCVll0LOtJ0UyM0e0w0tEWfRt6bAh097HKFj-DToHDRKYVbOe0fasIPZtTUCNvcFPJ6zOAjXyOGGELhzv8IgJ5g6f8lVJ0Le1KoXEU4zRg4w3NZTgpbEF6RwZURQ57JmCpTSpnmR11EKpNP5NgpQ2KNrHbFKgfWmW1txJuEBL8EQ5k1CQd");'></div>
+</div>
+</header>
+<div class="flex-1 flex flex-col max-w-[1400px] w-full mx-auto px-4 md:px-8 py-6 md:py-8 gap-6">
+<!-- Breadcrumbs & Heading -->
+<div class="flex flex-col gap-2">
+<div class="flex flex-wrap items-center gap-2 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Products</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-text-primary-light dark:text-text-primary-dark font-medium">Add New</span>
+</div>
+<div class="flex flex-wrap justify-between items-end gap-4 mt-2">
+<div class="flex flex-col gap-1">
+<h1 class="text-text-primary-light dark:text-text-primary-dark text-3xl font-extrabold tracking-tight">Add New Product</h1>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-base">Fill in the details below to add a new item to the catalog.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-text-primary-light dark:text-text-primary-dark font-medium text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Cancel</button>
+<button class="px-5 py-2.5 rounded-lg bg-primary text-white font-medium text-sm shadow-md shadow-blue-500/20 hover:bg-blue-600 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">save</span>
+                        Save Product
+                    </button>
+</div>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left Column: Main Info, Media, Pricing -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<!-- General Info Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden">
+<div class="px-6 py-4 border-b border-border-light dark:border-border-dark flex items-center justify-between">
+<h3 class="text-text-primary-light dark:text-text-primary-dark font-bold text-lg">General Information</h3>
+</div>
+<div class="p-6 flex flex-col gap-6">
+<label class="flex flex-col w-full gap-2">
+<span class="text-text-primary-light dark:text-text-primary-dark text-sm font-semibold">Product Name</span>
+<input class="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-primary/20 focus:border-primary h-11 px-4 text-base placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark transition-all" placeholder="e.g. Wireless Noise-Cancelling Headphones" value=""/>
+</label>
+<label class="flex flex-col w-full gap-2">
+<span class="text-text-primary-light dark:text-text-primary-dark text-sm font-semibold">Description</span>
+<div class="flex flex-col rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark overflow-hidden focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary transition-all">
+<!-- WYSIWYG Toolbar Simulation -->
+<div class="flex items-center gap-1 p-2 border-b border-border-light dark:border-border-dark bg-gray-50 dark:bg-[#15202b]">
+<button class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-secondary-light dark:text-text-secondary-dark transition-colors" title="Bold">
+<span class="material-symbols-outlined text-lg">format_bold</span>
+</button>
+<button class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-secondary-light dark:text-text-secondary-dark transition-colors" title="Italic">
+<span class="material-symbols-outlined text-lg">format_italic</span>
+</button>
+<button class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-secondary-light dark:text-text-secondary-dark transition-colors" title="Underline">
+<span class="material-symbols-outlined text-lg">format_underlined</span>
+</button>
+<div class="w-px h-4 bg-border-light dark:bg-border-dark mx-1"></div>
+<button class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-secondary-light dark:text-text-secondary-dark transition-colors" title="Bullet List">
+<span class="material-symbols-outlined text-lg">format_list_bulleted</span>
+</button>
+<button class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-secondary-light dark:text-text-secondary-dark transition-colors" title="Numbered List">
+<span class="material-symbols-outlined text-lg">format_list_numbered</span>
+</button>
+</div>
+<textarea class="w-full bg-transparent text-text-primary-light dark:text-text-primary-dark border-none focus:ring-0 min-h-36 p-4 text-base placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark resize-y" placeholder="Enter detailed product description..."></textarea>
+</div>
+</label>
+</div>
+</div>
+<!-- Media Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden">
+<div class="px-6 py-4 border-b border-border-light dark:border-border-dark flex items-center justify-between">
+<h3 class="text-text-primary-light dark:text-text-primary-dark font-bold text-lg">Product Media</h3>
+</div>
+<div class="p-6 flex flex-col gap-6">
+<!-- Upload Area -->
+<div class="border-2 border-dashed border-primary/40 hover:border-primary bg-primary/5 rounded-xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-colors group">
+<div class="bg-white dark:bg-gray-800 p-3 rounded-full shadow-sm mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">cloud_upload</span>
+</div>
+<p class="text-text-primary-light dark:text-text-primary-dark font-medium text-lg">Click to upload or drag and drop</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm mt-1">SVG, PNG, JPG or GIF (max. 800x400px)</p>
+</div>
+<!-- Image Preview Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<div class="relative group aspect-square rounded-lg overflow-hidden border border-border-light dark:border-border-dark">
+<img alt="Headphones product shot front view" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZxJ3y3onFtV_xcM46S0DWxQnua0w72QfMulIDnr57EwfdOsgJwsViO4RyzknugPWsd2cT-wQ-DwmazQhPUzk5U4vkjIXMEFI_8_ASuodYKyzuVD4YqqqmMy6uI5diEJiWRBNYZ3pNh8vBXcjpYbkOob8A-9V0dWKQE8C7ozk96ipKDhLSuotbyeL2tG1MPZ4BfmXT_GNFoY7RldarRzuxFuLvfYZ8xbm4lMwTafwxIXpIXAovmjeocPVkh1P5BWDzfv3PxO_w3uDS"/>
+<button class="absolute top-2 right-2 bg-white/90 text-red-500 rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-white">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+<div class="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-1 px-2 text-center backdrop-blur-sm">Main Image</div>
+</div>
+<div class="relative group aspect-square rounded-lg overflow-hidden border border-border-light dark:border-border-dark">
+<img alt="Headphones product shot side view" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBumZg0iHfkyMgxGDuIFD0UdHic5As7GTCy0Sbc1f1wfhBw-rBOQC-kRWzxireh3D2p7YsmmamWCWz9N4sRAl7ueRLh_hizmmCEGhL9nFK7s6DKmW1F9R6M6w42z73ZTS0L7C1YC2AFkogJJSpjqhW6z89Fg6OBfxia7zTKBoR5zXrW4YmBRcqQJ8gRkyBIt6XkRK4NcuTCph-FBvGHoGUFShx4Kre-eZMJRfKrDDbKzeNgQpMm2IK6oeYaP2VdUOJPJnhGZszcut95"/>
+<button class="absolute top-2 right-2 bg-white/90 text-red-500 rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-white">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<div class="relative group aspect-square rounded-lg overflow-hidden border border-border-light dark:border-border-dark">
+<img alt="Headphones lifestyle shot" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8rR43KiiiREyPVe1ZH5bjcDFtU9IKpmdt98zS-qn_OmkaezRrc8-nnv9JYQc6Z4jY9E8NptdfXF95RS7l0rxdMpsRaRUxq3ZlY1VRGXNRKSIIqM6VesOWm-nhyeacGSRCW_phllgLKWeDXrARf012ID_qohTcIkU40X4wSgObyx2aaE6OESgfKHzoV5TgxOElOgq3E4XgnfF6GQRi-LxZ5ks87AImd9zGp9eseNuUB7OEs7m6pkmZ4lX0kbIBC2kwIzn-DdsiZn6P"/>
+<button class="absolute top-2 right-2 bg-white/90 text-red-500 rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-white">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pricing & Inventory -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden">
+<div class="px-6 py-4 border-b border-border-light dark:border-border-dark flex items-center justify-between">
+<h3 class="text-text-primary-light dark:text-text-primary-dark font-bold text-lg">Pricing &amp; Inventory</h3>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="flex flex-col w-full gap-2">
+<span class="text-text-primary-light dark:text-text-primary-dark text-sm font-semibold">Base Price</span>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="text-text-secondary-light dark:text-text-secondary-dark">$</span>
+</div>
+<input class="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-primary/20 focus:border-primary h-11 pl-8 pr-4 text-base transition-all" placeholder="0.00" type="number" value="299.99"/>
+</div>
+</label>
+<label class="flex flex-col w-full gap-2">
+<span class="text-text-primary-light dark:text-text-primary-dark text-sm font-semibold">Discount Price</span>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="text-text-secondary-light dark:text-text-secondary-dark">$</span>
+</div>
+<input class="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-primary/20 focus:border-primary h-11 pl-8 pr-4 text-base transition-all" placeholder="0.00" type="number"/>
+</div>
+</label>
+<div class="col-span-1 md:col-span-2 h-px bg-border-light dark:bg-border-dark my-2"></div>
+<label class="flex flex-col w-full gap-2">
+<span class="text-text-primary-light dark:text-text-primary-dark text-sm font-semibold">SKU</span>
+<input class="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-primary/20 focus:border-primary h-11 px-4 text-base transition-all" placeholder="e.g. WH-1000XM4"/>
+</label>
+<label class="flex flex-col w-full gap-2">
+<span class="text-text-primary-light dark:text-text-primary-dark text-sm font-semibold">Quantity in Stock</span>
+<input class="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-primary/20 focus:border-primary h-11 px-4 text-base transition-all" placeholder="0" type="number" value="45"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Right Column: Status & Organization -->
+<div class="flex flex-col gap-6">
+<!-- Status Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden">
+<div class="px-6 py-4 border-b border-border-light dark:border-border-dark">
+<h3 class="text-text-primary-light dark:text-text-primary-dark font-bold text-lg">Status</h3>
+</div>
+<div class="p-6 flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<span class="text-text-primary-light dark:text-text-primary-dark font-medium">Product Status</span>
+<div class="flex items-center bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                                Active
+                            </div>
+</div>
+<!-- Toggle Switch -->
+<div class="flex items-center justify-between gap-4 p-3 rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-text-primary-light dark:text-text-primary-dark">Published</span>
+<span class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Visible to all users</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 dark:peer-focus:ring-primary/20 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<label class="flex flex-col w-full gap-2">
+<span class="text-text-primary-light dark:text-text-primary-dark text-sm font-semibold">Publish Date</span>
+<input class="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-primary/20 focus:border-primary h-11 px-4 text-base text-text-secondary-light dark:text-text-secondary-dark transition-all" type="date"/>
+</label>
+</div>
+</div>
+<!-- Organization Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden">
+<div class="px-6 py-4 border-b border-border-light dark:border-border-dark">
+<h3 class="text-text-primary-light dark:text-text-primary-dark font-bold text-lg">Organization</h3>
+</div>
+<div class="p-6 flex flex-col gap-6">
+<label class="flex flex-col w-full gap-2">
+<span class="text-text-primary-light dark:text-text-primary-dark text-sm font-semibold">Category</span>
+<div class="relative">
+<select class="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-primary/20 focus:border-primary h-11 px-4 text-base appearance-none transition-all cursor-pointer">
+<option disabled="" selected="" value="">Select Category</option>
+<option value="electronics">Electronics</option>
+<option value="clothing">Clothing</option>
+<option value="home">Home &amp; Garden</option>
+<option value="toys">Toys</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-text-secondary-light dark:text-text-secondary-dark">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</label>
+<label class="flex flex-col w-full gap-2">
+<span class="text-text-primary-light dark:text-text-primary-dark text-sm font-semibold">Brand / Vendor</span>
+<div class="relative">
+<select class="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-primary/20 focus:border-primary h-11 px-4 text-base appearance-none transition-all cursor-pointer">
+<option disabled="" selected="" value="">Select Brand</option>
+<option value="apple">Apple</option>
+<option value="samsung">Samsung</option>
+<option value="sony">Sony</option>
+<option value="nike">Nike</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-text-secondary-light dark:text-text-secondary-dark">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</label>
+<label class="flex flex-col w-full gap-2">
+<span class="text-text-primary-light dark:text-text-primary-dark text-sm font-semibold">Tags</span>
+<input class="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark focus:ring-2 focus:ring-primary/20 focus:border-primary h-11 px-4 text-base placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark transition-all" placeholder="Enter tags separated by comma"/>
+<div class="flex flex-wrap gap-2 mt-1">
+<span class="bg-primary/10 text-primary text-xs font-semibold px-2 py-1 rounded-md flex items-center gap-1">
+                                    New Arrival <button class="hover:text-red-500"><span class="material-symbols-outlined text-[10px]">close</span></button>
+</span>
+<span class="bg-primary/10 text-primary text-xs font-semibold px-2 py-1 rounded-md flex items-center gap-1">
+                                    Featured <button class="hover:text-red-500"><span class="material-symbols-outlined text-[10px]">close</span></button>
+</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer for Mobile/Quick Actions (Optional Enhancement) -->
+<div class="md:hidden sticky bottom-0 left-0 right-0 p-4 bg-surface-light dark:bg-surface-dark border-t border-border-light dark:border-border-dark flex gap-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+<button class="flex-1 py-3 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-text-primary-light dark:text-text-primary-dark font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Cancel</button>
+<button class="flex-1 py-3 rounded-lg bg-primary text-white font-medium shadow-md">Save Product</button>
+</div>
+</div>
+</body></html>
