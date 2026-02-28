@@ -15,18 +15,18 @@ const ProductDetailPage = () => {
           </div>
           <div className="flex items-center gap-4 lg:gap-8">
             <nav className="hidden lg:flex items-center gap-6">
-              <a className="text-sm font-medium hover:text-primary transition-colors" href="#">Categories</a>
-              <a className="text-sm font-medium hover:text-primary transition-colors" href="#">Deals</a>
-              <a className="text-sm font-medium hover:text-primary transition-colors" href="#">New Arrivals</a>
+              <Link className="text-sm font-medium hover:text-primary transition-colors" to="/catalog">Categories</Link>
+              <Link className="text-sm font-medium hover:text-primary transition-colors" to="/catalog">Deals</Link>
+              <Link className="text-sm font-medium hover:text-primary transition-colors" to="/catalog">New Arrivals</Link>
             </nav>
             <div className="flex gap-2">
-              <button className="flex items-center justify-center rounded-lg size-10 bg-slate-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+              <Link to="/login" className="flex items-center justify-center rounded-lg size-10 bg-slate-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                 <span className="material-symbols-outlined text-[20px]">person</span>
-              </button>
-              <button className="relative flex items-center justify-center rounded-lg size-10 bg-slate-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+              </Link>
+              <Link to="/cart" className="relative flex items-center justify-center rounded-lg size-10 bg-slate-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                 <span className="material-symbols-outlined text-[20px]">shopping_cart</span>
                 <span className="absolute top-1 right-1 size-2 bg-red-500 rounded-full"></span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

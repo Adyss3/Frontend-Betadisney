@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const ShoppingCart = () => {
   const cartItems = [
     { id: 1, name: "MacBook Pro 14\"", desc: "Space Grey, 512GB SSD, M3 Pro Chip", price: 1999, qty: 1, img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCm9BHdpnBOTaKYg-6mkOPPuciHc27taasELb2CNrvnKW58i6t4HNt2mZurjw-yRjd0QoiMQdWzywTYfBY2cSumCF94fKDqCtIcXd9-uqt3Ntkyd5X-7gnNMfAXmygXl1zuNcbBrNuqk4Z4a495typAc0lnDKHTugcvKfiellXjep3_JDyGImLX27NOaj5UAWgEaH_9EC_wkgFmJKGZWHzySgk5hXx3TAiOf67gzJXfUTzU_eqTit-PA32qhGK22k9qISj2odGhjaTb" },
@@ -9,12 +11,12 @@ const ShoppingCart = () => {
     <div className="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
       <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] dark:border-b-[#2a3642] px-4 md:px-10 py-3 bg-white dark:bg-[#1a232e]">
         <div className="flex items-center gap-8">
-          <div className="flex items-center gap-4 text-[#111418] dark:text-white">
+          <Link to="/" className="flex items-center gap-4 text-[#111418] dark:text-white">
             <div className="size-8 flex items-center justify-center text-primary">
               <span className="material-symbols-outlined text-3xl">hexagon</span>
             </div>
             <h2 className="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">TechStore</h2>
-          </div>
+          </Link>
         </div>
       </header>
 
@@ -83,9 +85,9 @@ const ShoppingCart = () => {
                   <span className="text-[#111418] dark:text-white text-lg font-bold">Order Total</span>
                   <span className="text-[#111418] dark:text-white text-2xl font-black">$2,137.00</span>
                 </div>
-                <button className="w-full bg-primary hover:bg-blue-600 text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-blue-500/30 transition-all active:scale-[0.98]">
+                <Link to="/payment" className="w-full bg-primary hover:bg-blue-600 text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-blue-500/30 transition-all active:scale-[0.98]">
                   Proceed to Checkout
-                </button>
+                </Link>
                 <div className="mt-6 flex flex-col items-center gap-3">
                   <div className="flex items-center justify-center gap-2 text-[#617589] dark:text-gray-500 text-xs">
                     <span className="material-symbols-outlined text-base">lock</span>

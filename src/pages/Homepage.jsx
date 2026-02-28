@@ -28,24 +28,24 @@ const Homepage = () => {
                     <span className="material-symbols-outlined">person</span>
                     Sign In
                   </Link>
-                  <button className="relative flex items-center justify-center p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all group">
+                  <Link className="relative flex items-center justify-center p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all group" to="/cart">
                     <span className="material-symbols-outlined">shopping_cart</span>
                     <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-sm">2</span>
-                  </button>
+                  </Link>
                   <button className="lg:hidden p-2 text-slate-700 dark:text-slate-300">
                     <span className="material-symbols-outlined">menu</span>
                   </button>
                 </div>
               </div>
               <nav className="hidden md:flex items-center gap-6 lg:gap-8 border-t border-slate-100 dark:border-slate-800 pt-3 overflow-x-auto">
-                <a className="text-sm font-bold text-primary whitespace-nowrap" href="#">Deals</a>
-                <a className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">Computers</a>
-                <a className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">Phones</a>
-                <a className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">Accessories</a>
-                <a className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">Networking</a>
-                <a className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">Office</a>
-                <a className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">Sound</a>
-                <a className="text-sm font-medium text-red-500 hover:text-red-600 transition-colors ml-auto whitespace-nowrap" href="#">Clearance</a>
+                <Link className="text-sm font-bold text-primary whitespace-nowrap" to="/catalog">Deals</Link>
+                <Link className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" to="/catalog">Computers</Link>
+                <Link className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" to="/catalog">Phones</Link>
+                <Link className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" to="/catalog">Accessories</Link>
+                <Link className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" to="/catalog">Networking</Link>
+                <Link className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" to="/catalog">Office</Link>
+                <Link className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" to="/catalog">Sound</Link>
+                <Link className="text-sm font-medium text-red-500 hover:text-red-600 transition-colors ml-auto whitespace-nowrap" to="/catalog">Clearance</Link>
               </nav>
             </header>
           </div>
@@ -66,12 +66,12 @@ const Homepage = () => {
                   Upgrade your mobile office with the latest laptops, phones, and accessories. Up to 40% off on premium gear.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <button className="flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-base font-bold text-white shadow-lg shadow-primary/30 transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-primary/30">
+                  <Link className="flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-base font-bold text-white shadow-lg shadow-primary/30 transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-primary/30" to="/catalog">
                     Shop Deals
-                  </button>
-                  <button className="flex h-12 items-center justify-center rounded-lg bg-white/10 px-8 text-base font-bold text-white backdrop-blur-md transition-colors hover:bg-white/20">
+                  </Link>
+                  <Link className="flex h-12 items-center justify-center rounded-lg bg-white/10 px-8 text-base font-bold text-white backdrop-blur-md transition-colors hover:bg-white/20" to="/catalog">
                     Browse Categories
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

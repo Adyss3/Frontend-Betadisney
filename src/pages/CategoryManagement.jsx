@@ -21,19 +21,19 @@ const CategoryManagement = () => {
                   <span className="material-symbols-outlined text-text-main-light dark:text-text-main-dark group-hover:text-primary transition-colors">dashboard</span>
                   <p className="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal">Dashboard</p>
                 </Link>
-                <Link className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark group transition-colors" to="#">
+                <Link className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark group transition-colors" to="/product-management">
                   <span className="material-symbols-outlined text-text-main-light dark:text-text-main-dark group-hover:text-primary transition-colors">package_2</span>
                   <p className="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal">Products</p>
                 </Link>
-                <Link className="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" to="#">
+                <Link className="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" to="/category-management">
                   <span className="material-symbols-outlined text-primary fill-current">category</span>
                   <p className="text-primary text-sm font-bold leading-normal">Categories</p>
                 </Link>
-                <Link className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark group transition-colors" to="#">
+                <Link className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark group transition-colors" to="/order-management">
                   <span className="material-symbols-outlined text-text-main-light dark:text-text-main-dark group-hover:text-primary transition-colors">shopping_bag</span>
                   <p className="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal">Orders</p>
                 </Link>
-                <Link className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark group transition-colors" to="#">
+                <Link className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark group transition-colors" to="/admin-settings">
                   <span className="material-symbols-outlined text-text-main-light dark:text-text-main-dark group-hover:text-primary transition-colors">settings</span>
                   <p className="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal">Settings</p>
                 </Link>

@@ -12,9 +12,9 @@ const DisputeResolutionPage = () => {
             <h2 className="text-lg font-bold leading-tight tracking-[-0.015em]">TechStore</h2>
           </div>
           <nav className="hidden md:flex items-center gap-9">
-            <Link className="text-[#111418] dark:text-slate-300 text-sm font-medium leading-normal hover:text-primary transition-colors" to="#">Shop</Link>
-            <Link className="text-[#111418] dark:text-slate-300 text-sm font-medium leading-normal hover:text-primary transition-colors" to="#">Orders</Link>
-            <Link className="text-[#111418] dark:text-slate-300 text-sm font-medium leading-normal hover:text-primary transition-colors" to="#">Support</Link>
+            <Link className="text-[#111418] dark:text-slate-300 text-sm font-medium leading-normal hover:text-primary transition-colors" to="/catalog">Shop</Link>
+            <Link className="text-[#111418] dark:text-slate-300 text-sm font-medium leading-normal hover:text-primary transition-colors" to="/orders">Orders</Link>
+            <Link className="text-[#111418] dark:text-slate-300 text-sm font-medium leading-normal hover:text-primary transition-colors" to="/support">Support</Link>
           </nav>
         </div>
         <div className="flex items-center gap-4">
@@ -190,7 +190,7 @@ const DisputeResolutionPage = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-[#111418] dark:text-white">24/7 Support</h4>
-                    <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">Need help with this form? <Link className="text-primary font-medium hover:underline" to="#">Chat with us</Link>.</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">Need help with this form? <Link className="text-primary font-medium hover:underline" to="/support">Chat with us</Link>.</p>
                   </div>
                 </div>
               </div>
@@ -198,11 +198,11 @@ const DisputeResolutionPage = () => {
               <div className="bg-white dark:bg-surface-dark rounded-xl p-6 shadow-sm border border-[#e5e7eb] dark:border-slate-800">
                 <h4 className="font-bold text-sm text-[#111418] dark:text-white mb-3">Common Questions</h4>
                 <div className="space-y-3">
-                  <Link className="block text-sm text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center justify-between" to="#">
+                  <Link className="block text-sm text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center justify-between" to="/support">
                     <span>How long do refunds take?</span>
                     <span className="material-symbols-outlined text-base">chevron_right</span>
                   </Link>
-                  <Link className="block text-sm text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center justify-between" to="#">
+                  <Link className="block text-sm text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center justify-between" to="/support">
                     <span>Can I update my claim later?</span>
                     <span className="material-symbols-outlined text-base">chevron_right</span>
                   </Link>

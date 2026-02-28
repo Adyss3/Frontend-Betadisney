@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const CatalogScreen = () => {
   const products = [
     { id: 1, name: "Nike Air Zoom Pegasus 39", rating: 4.8, reviews: 128, price: 99.99, oldPrice: 130, badge: "Sale", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAmOiQTreVRZFZm27vRkR-HCCtfmCNhQBtU-i2z4gfrMdyjrUx7ad9oRETLdnG8rj0snMoRl3a46v46JEm90wPZhPPnHVpOexFjRp70vY1v9W5Knh5cFITfR6eja2DEwbrGHUySXoOSD6cyBFsGqR7LlR0uN4H-oe1VjLEUOx01e2FxbsRBP4VE3Xqa_Hq6zEmznBIAHAaskFy8SoD3snjrAS1kIOp4KUMUZz4en7JnY2zmLqiOxfeqp1SRLoFYdPAl5xnhd_tBM8Xr" },
@@ -11,12 +13,12 @@ const CatalogScreen = () => {
       <header className="sticky top-0 z-50 bg-white dark:bg-[#1a2632] border-b border-gray-200 dark:border-gray-800 shadow-sm">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 gap-4">
-            <div className="flex items-center gap-2 cursor-pointer flex-shrink-0">
+            <Link to="/" className="flex items-center gap-2 cursor-pointer flex-shrink-0">
               <div className="size-8 text-primary">
                 <span className="material-symbols-outlined text-3xl">hexagon</span>
               </div>
               <h2 className="text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white">ShopEase</h2>
-            </div>
+            </Link>
             <div className="hidden md:flex flex-1 max-w-lg">
               <div className="relative w-full group">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -27,13 +29,13 @@ const CatalogScreen = () => {
             </div>
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
-                <button className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold bg-primary text-white hover:bg-blue-600 transition-colors shadow-sm">
+                <Link to="/login" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold bg-primary text-white hover:bg-blue-600 transition-colors shadow-sm">
                   <span>Login</span>
-                </button>
-                <button className="relative p-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark text-slate-700 dark:text-slate-200 transition-colors">
+                </Link>
+                <Link to="/cart" className="relative p-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark text-slate-700 dark:text-slate-200 transition-colors">
                   <span className="material-symbols-outlined">shopping_cart</span>
                   <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white ring-2 ring-white dark:ring-[#1a2632]">2</span>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -91,7 +93,7 @@ const CatalogScreen = () => {
                   </div>
                   <div className="p-4">
                     <h3 className="text-base font-bold text-slate-900 dark:text-white line-clamp-2 mb-1">
-                      <a href="#">{product.name}</a>
+                      <Link to="/product/1">{product.name}</Link>
                     </h3>
                     <div className="flex items-center gap-1 mb-2">
                       <span className="material-symbols-outlined filled text-amber-400 text-[16px]">star</span>

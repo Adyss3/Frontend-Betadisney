@@ -11,6 +11,16 @@ import PaymentSelectionPage from './pages/PaymentSelectionPage'
 import AdminDashboard from './pages/AdminDashboard'
 import CustomerSupportPage from './pages/CustomerSupportPage'
 import AIProductRecommendations from './pages/AIProductRecommendations'
+import ProductManagement from './pages/ProductManagement'
+import OrderManagement from './pages/OrderManagement'
+import UserManagement from './pages/UserManagement'
+import CategoryManagement from './pages/CategoryManagement'
+import DisputeManagement from './pages/DisputeManagement'
+import DisputeResolutionPage from './pages/DisputeResolutionPage'
+import AdminSettings from './pages/AdminSettings'
+import EditProductScreen from './pages/EditProductScreen'
+import EditUserScreen from './pages/EditUserScreen'
+import DisputeDetailsPage from './pages/DisputeDetailsPage'
 
 const App = () => {
   return (
@@ -28,6 +38,16 @@ const App = () => {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/support" element={<CustomerSupportPage />} />
         <Route path="/recommendations" element={<AIProductRecommendations />} />
+        <Route path="/product-management" element={<ProductManagement />} />
+        <Route path="/order-management" element={<OrderManagement />} />
+        <Route path="/user-management" element={<UserManagement />} />
+        <Route path="/category-management" element={<CategoryManagement />} />
+        <Route path="/dispute-management" element={<DisputeManagement />} />
+        <Route path="/dispute-resolution" element={<DisputeResolutionPage />} />
+        <Route path="/admin-settings" element={<AdminSettings />} />
+        <Route path="/product/edit/:id" element={<EditProductScreen />} />
+        <Route path="/user/edit/:id" element={<EditUserScreen />} />
+        <Route path="/dispute/:id" element={<DisputeDetailsPage />} />
       </Routes>
     </Router>
   )

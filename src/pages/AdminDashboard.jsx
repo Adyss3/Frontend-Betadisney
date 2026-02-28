@@ -21,32 +21,32 @@ const AdminDashboard = () => {
                 <span className="material-symbols-outlined icon-fill">dashboard</span>
                 <span className="text-sm font-semibold">Overview</span>
               </Link>
-              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="#">
+              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="/product-management">
                 <span className="material-symbols-outlined">inventory_2</span>
                 <span className="text-sm font-medium">Products</span>
               </Link>
-              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="#">
+              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="/order-management">
                 <span className="material-symbols-outlined">shopping_bag</span>
                 <span className="text-sm font-medium">Orders</span>
                 <span className="ml-auto bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full">4</span>
               </Link>
-              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="#">
+              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="/user-management">
                 <span className="material-symbols-outlined">group</span>
                 <span className="text-sm font-medium">Users</span>
               </Link>
-              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="#">
+              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="/category-management">
                 <span className="material-symbols-outlined">category</span>
                 <span className="text-sm font-medium">Categories</span>
               </Link>
             </div>
             <div className="flex flex-col gap-1">
               <div className="px-2 text-xs font-bold text-[#617589] dark:text-[#9BA8B8] uppercase tracking-wider mb-2">Management</div>
-              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="#">
+              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="/dispute-management">
                 <span className="material-symbols-outlined">error</span>
                 <span className="text-sm font-medium">Disputes</span>
                 <span className="ml-auto bg-[#e73908] text-white text-xs font-bold px-2 py-0.5 rounded-full">12</span>
               </Link>
-              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="#">
+              <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-[#9BA8B8] hover:bg-[#f0f2f4] dark:hover:bg-[#2C3B4E] hover:text-[#111418] dark:hover:text-white transition-colors" to="/admin-settings">
                 <span className="material-symbols-outlined">settings</span>
                 <span className="text-sm font-medium">Settings</span>
               </Link>

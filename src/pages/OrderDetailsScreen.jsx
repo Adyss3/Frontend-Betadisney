@@ -6,9 +6,9 @@ const OrderDetailsScreen = () => {
       <div className="flex-1 flex flex-col w-full max-w-[1440px] mx-auto p-4 md:p-6 lg:p-8">
         <div className="w-full mb-6">
           <div className="flex flex-wrap gap-2 items-center text-sm">
-            <Link className="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors font-medium leading-normal" to="#">Dashboard</Link>
+            <Link className="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors font-medium leading-normal" to="/admin">Dashboard</Link>
             <span className="text-slate-400 dark:text-slate-600 font-medium leading-normal material-symbols-outlined text-base">chevron_right</span>
-            <Link className="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors font-medium leading-normal" to="#">Orders</Link>
+            <Link className="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors font-medium leading-normal" to="/order-management">Orders</Link>
             <span className="text-slate-400 dark:text-slate-600 font-medium leading-normal material-symbols-outlined text-base">chevron_right</span>
             <span className="text-slate-900 dark:text-slate-100 font-semibold leading-normal">Order #ORD-2023-001</span>
           </div>

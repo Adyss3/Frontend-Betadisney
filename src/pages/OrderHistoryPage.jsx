@@ -16,8 +16,8 @@ const OrderHistoryPage = () => {
               <nav className="hidden md:flex items-center gap-6">
                 <Link className="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" to="/">Home</Link>
                 <Link className="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" to="/catalog">Products</Link>
-                <Link className="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" to="#">Support</Link>
-                <Link className="text-slate-900 dark:text-white text-sm font-bold border-b-2 border-primary py-5" to="#">My Account</Link>
+                <Link className="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" to="/support">Support</Link>
+                <Link className="text-slate-900 dark:text-white text-sm font-bold border-b-2 border-primary py-5" to="/orders">My Account</Link>
               </nav>
             </div>
             <div className="flex flex-1 justify-end items-center gap-4">
@@ -30,10 +30,10 @@ const OrderHistoryPage = () => {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <button className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
+                <Link to="/cart" className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
                   <span className="material-symbols-outlined">shopping_cart</span>
                   <span className="absolute top-1 right-1 size-2 bg-red-500 rounded-full"></span>
-                </button>
+                </Link>
                 <button className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
                   <span className="material-symbols-outlined">notifications</span>
                 </button>
@@ -56,7 +56,7 @@ const OrderHistoryPage = () => {
             <li>
               <div className="flex items-center">
                 <span className="material-symbols-outlined text-slate-400 text-lg mx-1">chevron_right</span>
-                <Link className="ml-1 text-sm font-medium text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white md:ml-2" to="#">My Account</Link>
+                <Link className="ml-1 text-sm font-medium text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white md:ml-2" to="/orders">My Account</Link>
               </div>
             </li>
             <li aria-current="page">
@@ -110,7 +110,7 @@ const OrderHistoryPage = () => {
               <div className="flex flex-col items-end">
                 <span className="text-slate-500 dark:text-slate-400 font-medium text-xs uppercase tracking-wider">Order # 112-34234-23</span>
                 <div className="flex gap-4 mt-1">
-                  <Link className="text-primary hover:text-primary-dark font-semibold text-sm hover:underline" to="#">View Invoice</Link>
+                  <Link className="text-primary hover:text-primary-dark font-semibold text-sm hover:underline" to="/order/112-34234-23">View Invoice</Link>
                 </div>
               </div>
             </div>
@@ -127,7 +127,7 @@ const OrderHistoryPage = () => {
                       <img alt="MacBook Pro" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGpeRZEs_haNP1bHq7yedJsCXYOPxPp79XuZrvbgT5Asstv2hy_gysY4Hb5Kd56qdVCwLte47YS5MHNKfz0aU0BaJumF_3pRFwdTRt6YpM6y_RWuvT5ae20UXXWXfE9tLnC8nBcCGjCtMQouqacMkyw7q0fX63UZVNO5Ul-ubJW_vO1GUoIuJjt5kVk2o9EYAP1iLL6lcjPcs493dXJb22wjXsrDuIqPCTDOYpMgLQfAnCMXXq-478I_a5fp9D8gjt3Ahw8TRo3AB3" />
                     </div>
                     <div>
-                      <Link className="font-bold text-primary hover:underline text-base line-clamp-2" to="#">MacBook Pro 14" - Space Gray (M3 Pro, 18GB RAM, 512GB SSD)</Link>
+                      <Link className="font-bold text-primary hover:underline text-base line-clamp-2" to="/product/1">MacBook Pro 14" - Space Gray (M3 Pro, 18GB RAM, 512GB SSD)</Link>
                       <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Return window closed on Nov 24, 2023</p>
                       <button className="mt-3 px-3 py-1.5 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary-dark transition-colors inline-flex items-center gap-1">
                         <span className="material-symbols-outlined text-[18px]">shopping_bag</span>
@@ -139,7 +139,7 @@ const OrderHistoryPage = () => {
               </div>
               <div className="flex flex-col gap-3 justify-center">
                 <button className="w-full py-2.5 px-4 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg shadow-sm transition-colors text-sm">Track Package</button>
-                <button className="w-full py-2.5 px-4 bg-white dark:bg-transparent border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white font-bold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-sm">View Order Details</button>
+                <Link to="/order/112-34234-23" className="w-full py-2.5 px-4 bg-white dark:bg-transparent border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white font-bold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-sm text-center">View Order Details</Link>
                 <button className="w-full py-2.5 px-4 bg-white dark:bg-transparent border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white font-bold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-sm">Write a Product Review</button>
               </div>
             </div>
@@ -166,7 +166,7 @@ const OrderHistoryPage = () => {
               <div className="flex flex-col items-end">
                 <span className="text-slate-500 dark:text-slate-400 font-medium text-xs uppercase tracking-wider">Order # 405-92834-11</span>
                 <div className="flex gap-4 mt-1">
-                  <Link className="text-primary hover:text-primary-dark font-semibold text-sm hover:underline" to="#">View Invoice</Link>
+                  <Link className="text-primary hover:text-primary-dark font-semibold text-sm hover:underline" to="/order/405-92834-11">View Invoice</Link>
                 </div>
               </div>
             </div>
@@ -191,7 +191,7 @@ const OrderHistoryPage = () => {
                       <img alt="iPhone Case" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6YQpYckQLfduO09UxARuudQnETBERemO0YYyUSaHiT_bzarWLvScgzqAQokiQBq2qhl4DPqFtLFoJPtluFVv3bv5uTKiXb8QH9dFGUdUNSSZZanHtXzmk9xp9l0IQLcuLfZYZc-TTdjKmHH3kyqiVXhFru-ETNPOp4l2oSjKye20kb0Fb19RSzWRjQN7O4h3JDWBTKZ1KIGexMtKyy3uakf4arrKWSeP2mSYlI36G6DwCpDz_Stc7kmq7kvW7iRty3Xg7QF2AXdml" />
                     </div>
                     <div>
-                      <Link className="font-bold text-slate-900 dark:text-white hover:text-primary hover:underline text-sm md:text-base" to="#">MagSafe Silicone Case for iPhone 15 Pro - Storm Blue</Link>
+                      <Link className="font-bold text-slate-900 dark:text-white hover:text-primary hover:underline text-sm md:text-base" to="/product/2">MagSafe Silicone Case for iPhone 15 Pro - Storm Blue</Link>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Sold by: TechStore Inc.</p>
                     </div>
                   </div>
@@ -200,7 +200,7 @@ const OrderHistoryPage = () => {
                       <img alt="USB-C Cable" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkO8UYcHxn98L6k_3MbXX2xcotOJ8pnizcltMczjnSjVl3_g3qVgPWDF6Z_3sM-SGnKT5QXHlSCXFVaDGs1rBASIc7zPyxdTWjh7VAf75cl-2iuFHyTtNCP94xuyZHO7dU9PIu2rwdvkoGR1iwkFub67KskWEVEuFmFcL5vDytWh2-bDjvQF9B9aJMOLfr8Cyv1JzAuUERJL-GkilevRmP_FGUM53XhQ79VaYXYx8BEA6wFEssmEeuq351W4EC_hjAXYpLHccdp4L9" />
                     </div>
                     <div>
-                      <Link className="font-bold text-slate-900 dark:text-white hover:text-primary hover:underline text-sm md:text-base" to="#">USB-C to Lightning Cable (2m)</Link>
+                      <Link className="font-bold text-slate-900 dark:text-white hover:text-primary hover:underline text-sm md:text-base" to="/product/3">USB-C to Lightning Cable (2m)</Link>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Sold by: TechStore Accessories</p>
                     </div>
                   </div>
@@ -208,7 +208,7 @@ const OrderHistoryPage = () => {
               </div>
               <div className="flex flex-col gap-3 justify-center">
                 <button className="w-full py-2.5 px-4 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg shadow-sm transition-colors text-sm">Track Package</button>
-                <button className="w-full py-2.5 px-4 bg-white dark:bg-transparent border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white font-bold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-sm">View Order Details</button>
+                <Link to="/order/405-92834-11" className="w-full py-2.5 px-4 bg-white dark:bg-transparent border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white font-bold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-sm text-center">View Order Details</Link>
               </div>
             </div>
           </div>
@@ -241,14 +241,14 @@ const OrderHistoryPage = () => {
                       <img alt="Monitor" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkFcGTLfKDEoWRkBp6JESEVwBYYCCqR1Ox_Cdy7yk6dhFRc-P23X8IvuQX73bKdKdm9LEZbgXfXVEYZ2ZcEHOx7N7wvziGCW6V7cZ6dm8dlHuRCBThwC7KBk1eRMjkitdHutAsuvWly6nvm1a0d4DBmfSAOd6D2mgRy43HyYwsb7_HCAn4db5hFSUppdWt8evYn77-gNJa12xd9ERAlG59rSRIWQ-USqKengQhqRnRu-tUISRdSWdapF60vMJLLtXIil5J5rdEoBtu" />
                     </div>
                     <div>
-                      <Link className="font-bold text-slate-700 dark:text-slate-300 hover:underline text-sm md:text-base" to="#">UltraSharp 27 4K USB-C Monitor - U2720Q</Link>
+                      <Link className="font-bold text-slate-700 dark:text-slate-300 hover:underline text-sm md:text-base" to="/product/4">UltraSharp 27 4K USB-C Monitor - U2720Q</Link>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="flex flex-col gap-3 justify-center">
                 <button className="w-full py-2.5 px-4 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg shadow-sm transition-colors text-sm">Buy Again</button>
-                <button className="w-full py-2.5 px-4 bg-white dark:bg-transparent border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white font-bold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-sm">View Order Details</button>
+                <Link to="/order/223-11239-00" className="w-full py-2.5 px-4 bg-white dark:bg-transparent border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white font-bold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-sm text-center">View Order Details</Link>
               </div>
             </div>
           </div>

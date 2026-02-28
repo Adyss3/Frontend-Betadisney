@@ -15,11 +15,11 @@ const LoginPage = () => {
             <div className="hidden md:flex items-center gap-9">
               <Link className="text-[#111418] dark:text-slate-200 hover:text-primary transition-colors text-sm font-medium leading-normal" to="/">Home</Link>
               <a className="text-[#111418] dark:text-slate-200 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Shop</a>
-              <a className="text-[#111418] dark:text-slate-200 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Contact</a>
+              <Link className="text-[#111418] dark:text-slate-200 hover:text-primary transition-colors text-sm font-medium leading-normal" to="/support">Contact</Link>
             </div>
-            <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary/10 text-primary hover:bg-primary/20 transition-colors text-sm font-bold leading-normal tracking-[0.015em]">
+            <Link className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary/10 text-primary hover:bg-primary/20 transition-colors text-sm font-bold leading-normal tracking-[0.015em]" to="/register">
               <span className="truncate">Sign Up</span>
-            </button>
+            </Link>
           </div>
         </header>
 
@@ -85,7 +85,7 @@ const LoginPage = () => {
                 <div className="mt-8 text-center">
                   <p className="text-slate-500 dark:text-slate-400 text-sm">
                     Don't have an account? 
-                    <a className="text-primary font-bold hover:underline" href="#"> Sign up</a>
+                    <Link className="text-primary font-bold hover:underline" to="/register"> Sign up</Link>
                   </p>
                 </div>
               </div>

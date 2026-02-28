@@ -119,7 +119,7 @@ const PaymentSelectionPage = () => {
             </div>
 
             <div className="mt-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
-              <Link className="text-primary font-bold hover:underline flex items-center gap-1" to="#">
+              <Link className="text-primary font-bold hover:underline flex items-center gap-1" to="/cart">
                 <span className="material-symbols-outlined text-lg">arrow_back</span>
                 Return to Shipping
               </Link>

@@ -22,22 +22,22 @@ const ProductManagement = () => {
                 <span className="material-symbols-outlined icon-fill">inventory_2</span>
                 <span className="font-medium text-sm">Products</span>
               </Link>
-              <Link className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" to="#">
+              <Link className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" to="/order-management">
                 <span className="material-symbols-outlined text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white">shopping_bag</span>
                 <span className="font-medium text-sm">Orders</span>
               </Link>
-              <Link className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" to="#">
+              <Link className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" to="/user-management">
                 <span className="material-symbols-outlined text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white">group</span>
                 <span className="font-medium text-sm">Customers</span>
               </Link>
-              <Link className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" to="#">
+              <Link className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" to="/admin">
                 <span className="material-symbols-outlined text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white">analytics</span>
                 <span className="font-medium text-sm">Analytics</span>
               </Link>
             </div>
             <div>
               <p className="px-2 text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-2">Settings</p>
-              <Link className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" to="#">
+              <Link className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" to="/admin-settings">
                 <span className="material-symbols-outlined text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white">settings</span>
                 <span className="font-medium text-sm">General</span>
               </Link>

@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom'
+
 const RegistrationPage = () => {
   return (
     <div className="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white">
       <div className="flex min-h-screen w-full flex-row overflow-hidden">
         <div className="flex w-full flex-col justify-between bg-white dark:bg-[#111a22] p-8 lg:w-1/2 lg:p-12 xl:p-16 relative z-10 shadow-xl lg:shadow-none">
           <header className="flex items-center gap-3">
-            <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <Link to="/" className="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
               <span className="material-symbols-outlined text-3xl">local_mall</span>
-            </div>
+            </Link>
             <h2 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">TechStore</h2>
           </header>
 
@@ -76,7 +78,7 @@ const RegistrationPage = () => {
 
           <footer className="mt-8 flex justify-center gap-1 text-sm font-medium">
             <span className="text-gray-500 dark:text-gray-400">Already have an account?</span>
-            <a className="font-bold text-primary hover:underline" href="#">Log In</a>
+            <Link className="font-bold text-primary hover:underline" to="/login">Log In</Link>
           </footer>
         </div>
 

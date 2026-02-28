@@ -20,25 +20,25 @@ const OrderManagement = () => {
             <span className="material-symbols-outlined group-hover:text-[#111418] dark:group-hover:text-white">dashboard</span>
             <span className="text-sm font-medium group-hover:text-[#111418] dark:group-hover:text-white">Dashboard</span>
           </Link>
-          <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 transition-colors" to="#">
+          <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:text-gray-400 dark:hover:bg-gray-800 transition-colors group" to="/order-management">
             <span className="material-symbols-outlined fill">shopping_bag</span>
             <span className="text-sm font-bold">Orders</span>
           </Link>
-          <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:text-gray-400 dark:hover:bg-gray-800 transition-colors group" to="#">
+          <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:text-gray-400 dark:hover:bg-gray-800 transition-colors group" to="/product-management">
             <span className="material-symbols-outlined group-hover:text-[#111418] dark:group-hover:text-white">smartphone</span>
             <span className="text-sm font-medium group-hover:text-[#111418] dark:group-hover:text-white">Products</span>
           </Link>
-          <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:text-gray-400 dark:hover:bg-gray-800 transition-colors group" to="#">
+          <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:text-gray-400 dark:hover:bg-gray-800 transition-colors group" to="/user-management">
             <span className="material-symbols-outlined group-hover:text-[#111418] dark:group-hover:text-white">people</span>
             <span className="text-sm font-medium group-hover:text-[#111418] dark:group-hover:text-white">Customers</span>
           </Link>
-          <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:text-gray-400 dark:hover:bg-gray-800 transition-colors group" to="#">
+          <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:text-gray-400 dark:hover:bg-gray-800 transition-colors group" to="/admin">
             <span className="material-symbols-outlined group-hover:text-[#111418] dark:group-hover:text-white">bar_chart</span>
             <span className="text-sm font-medium group-hover:text-[#111418] dark:group-hover:text-white">Analytics</span>
           </Link>
           <div className="mt-4 pt-4 border-t border-[#f0f2f4] dark:border-gray-800">
             <p className="px-3 text-xs font-semibold text-[#617589] uppercase tracking-wider mb-2">Settings</p>
-            <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:text-gray-400 dark:hover:bg-gray-800 transition-colors group" to="#">
+            <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:text-gray-400 dark:hover:bg-gray-800 transition-colors group" to="/admin-settings">
               <span className="material-symbols-outlined group-hover:text-[#111418] dark:group-hover:text-white">settings</span>
               <span className="text-sm font-medium group-hover:text-[#111418] dark:group-hover:text-white">General</span>
             </Link>

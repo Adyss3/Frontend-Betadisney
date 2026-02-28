@@ -13,8 +13,8 @@ const CustomerSupportPage = () => {
           </div>
           <div className="hidden md:flex items-center gap-9">
             <Link className="text-[#111418] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" to="/">Shop</Link>
-            <Link className="text-primary text-sm font-bold leading-normal" to="#">Support</Link>
-            <Link className="text-[#111418] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" to="#">Account</Link>
+            <Link className="text-[#111418] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" to="/support">Support</Link>
+            <Link className="text-[#111418] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" to="/orders">Account</Link>
             <Link className="text-[#111418] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" to="/cart">Cart</Link>
           </div>
         </div>
@@ -28,12 +28,12 @@ const CustomerSupportPage = () => {
             </div>
           </label>
           <div className="flex gap-2">
-            <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors">
+            <Link to="/login" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors">
               <span className="truncate">Sign In</span>
-            </button>
-            <button className="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#f0f2f4] dark:bg-[#24303f] text-[#111418] dark:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-3 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            </Link>
+            <Link to="/cart" className="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#f0f2f4] dark:bg-[#24303f] text-[#111418] dark:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-3 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
               <span className="material-symbols-outlined text-[20px]">shopping_cart</span>
-            </button>
+            </Link>
           </div>
         </div>
       </header>

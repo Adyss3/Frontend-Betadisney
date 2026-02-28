@@ -19,23 +19,23 @@ const DisputeManagement = () => {
                   <span className="material-symbols-outlined text-[24px]">dashboard</span>
                   <p className="text-sm font-medium">Dashboard</p>
                 </Link>
-                <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors" to="#">
+                <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors" to="/order-management">
                   <span className="material-symbols-outlined text-[24px]">shopping_bag</span>
                   <p className="text-sm font-medium">Orders</p>
                 </Link>
-                <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors" to="#">
+                <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors" to="/product-management">
                   <span className="material-symbols-outlined text-[24px]">inventory_2</span>
                   <p className="text-sm font-medium">Products</p>
                 </Link>
-                <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-colors" to="#">
+                <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-colors" to="/dispute-management">
                   <span className="material-symbols-outlined text-[24px] fill-1">gavel</span>
                   <p className="text-sm font-bold">Disputes</p>
                 </Link>
-                <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors" to="#">
+                <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors" to="/user-management">
                   <span className="material-symbols-outlined text-[24px]">group</span>
                   <p className="text-sm font-medium">Customers</p>
                 </Link>
-                <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors" to="#">
+                <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors" to="/admin-settings">
                   <span className="material-symbols-outlined text-[24px]">settings</span>
                   <p className="text-sm font-medium">Settings</p>
                 </Link>

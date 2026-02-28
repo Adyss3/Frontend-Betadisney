@@ -13,10 +13,10 @@ const AIProductRecommendations = () => {
               <h2 className="text-lg font-bold leading-tight tracking-[-0.015em] group-hover:text-primary transition-colors">TechStore</h2>
             </Link>
             <nav className="hidden lg:flex items-center gap-6">
-              <Link className="text-[#111418] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" to="#">Computers</Link>
-              <Link className="text-[#111418] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" to="#">Phones</Link>
-              <Link className="text-[#111418] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" to="#">Accessories</Link>
-              <Link className="text-[#111418] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" to="#">Deals</Link>
+              <Link className="text-[#111418] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" to="/catalog">Computers</Link>
+              <Link className="text-[#111418] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" to="/catalog">Phones</Link>
+              <Link className="text-[#111418] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" to="/catalog">Accessories</Link>
+              <Link className="text-[#111418] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" to="/catalog">Deals</Link>
             </nav>
           </div>
           <div className="flex items-center justify-end gap-4 flex-1 lg:flex-none">
@@ -29,13 +29,13 @@ const AIProductRecommendations = () => {
               </div>
             </div>
             <div className="flex gap-2">
-              <button className="flex items-center justify-center size-10 rounded-lg hover:bg-[#f0f2f4] dark:hover:bg-[#1f2b37] text-[#111418] dark:text-white transition-colors relative">
+              <Link to="/cart" className="flex items-center justify-center size-10 rounded-lg hover:bg-[#f0f2f4] dark:hover:bg-[#1f2b37] text-[#111418] dark:text-white transition-colors relative">
                 <span className="material-symbols-outlined">shopping_cart</span>
                 <span className="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-white dark:border-background-dark"></span>
-              </button>
-              <button className="flex items-center justify-center size-10 rounded-lg hover:bg-[#f0f2f4] dark:hover:bg-[#1f2b37] text-[#111418] dark:text-white transition-colors">
+              </Link>
+              <Link to="/login" className="flex items-center justify-center size-10 rounded-lg hover:bg-[#f0f2f4] dark:hover:bg-[#1f2b37] text-[#111418] dark:text-white transition-colors">
                 <span className="material-symbols-outlined">account_circle</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@ const AIProductRecommendations = () => {
               </div>
               <div className="flex flex-col flex-1 gap-2">
                 <div className="flex justify-between items-start">
-                  <Link className="text-[#111418] dark:text-white text-base font-medium leading-tight hover:text-primary transition-colors line-clamp-2" to="#">Apple Magic Mouse 2 - Wireless</Link>
+                  <Link className="text-[#111418] dark:text-white text-base font-medium leading-tight hover:text-primary transition-colors line-clamp-2" to="/product/1">Apple Magic Mouse 2 - Wireless</Link>
                 </div>
                 <div className="flex items-center gap-1 text-xs text-yellow-500">
                   <span className="material-symbols-outlined icon-filled text-[14px]">star</span>
@@ -148,7 +148,7 @@ const AIProductRecommendations = () => {
               </div>
               <div className="flex flex-col flex-1 gap-2">
                 <div className="flex justify-between items-start">
-                  <Link className="text-[#111418] dark:text-white text-base font-medium leading-tight hover:text-primary transition-colors line-clamp-2" to="#">Satechi USB-C Multi-Port Adapter</Link>
+                  <Link className="text-[#111418] dark:text-white text-base font-medium leading-tight hover:text-primary transition-colors line-clamp-2" to="/product/2">Satechi USB-C Multi-Port Adapter</Link>
                 </div>
                 <div className="flex items-center gap-1 text-xs text-yellow-500">
                   <span className="material-symbols-outlined icon-filled text-[14px]">star</span>
@@ -181,7 +181,7 @@ const AIProductRecommendations = () => {
               </div>
               <div className="flex flex-col flex-1 gap-2">
                 <div className="flex justify-between items-start">
-                  <Link className="text-[#111418] dark:text-white text-base font-medium leading-tight hover:text-primary transition-colors line-clamp-2" to="#">LG UltraFine 5K Display - 27 Inch</Link>
+                  <Link className="text-[#111418] dark:text-white text-base font-medium leading-tight hover:text-primary transition-colors line-clamp-2" to="/product/3">LG UltraFine 5K Display - 27 Inch</Link>
                 </div>
                 <div className="flex items-center gap-1 text-xs text-yellow-500">
                   <span className="material-symbols-outlined icon-filled text-[14px]">star</span>
@@ -213,7 +213,7 @@ const AIProductRecommendations = () => {
               </div>
               <div className="flex flex-col flex-1 gap-2">
                 <div className="flex justify-between items-start">
-                  <Link className="text-[#111418] dark:text-white text-base font-medium leading-tight hover:text-primary transition-colors line-clamp-2" to="#">Leather Laptop Sleeve - 16 inch</Link>
+                  <Link className="text-[#111418] dark:text-white text-base font-medium leading-tight hover:text-primary transition-colors line-clamp-2" to="/product/4">Leather Laptop Sleeve - 16 inch</Link>
                 </div>
                 <div className="flex items-center gap-1 text-xs text-yellow-500">
                   <span className="material-symbols-outlined icon-filled text-[14px]">star</span>
