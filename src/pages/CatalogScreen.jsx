@@ -1,12 +1,36 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { useStore } from '../contexts/StoreContext'
+import { useState, useEffect } from 'react'
 
 const CatalogScreen = () => {
-  const products = [
-    { id: 1, name: "Nike Air Zoom Pegasus 39", rating: 4.8, reviews: 128, price: 99.99, oldPrice: 130, badge: "Sale", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAmOiQTreVRZFZm27vRkR-HCCtfmCNhQBtU-i2z4gfrMdyjrUx7ad9oRETLdnG8rj0snMoRl3a46v46JEm90wPZhPPnHVpOexFjRp70vY1v9W5Knh5cFITfR6eja2DEwbrGHUySXoOSD6cyBFsGqR7LlR0uN4H-oe1VjLEUOx01e2FxbsRBP4VE3Xqa_Hq6zEmznBIAHAaskFy8SoD3snjrAS1kIOp4KUMUZz4en7JnY2zmLqiOxfeqp1SRLoFYdPAl5xnhd_tBM8Xr" },
-    { id: 2, name: "Adidas Ultraboost Light", rating: 4.9, reviews: 85, price: 190, badge: "New", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBrJDrW0qS6odrtzNQmfAR8YHFc3wpVUtBkJNE4EItijh-e4G6YuITlcy6SEpguC5e9msNE82X4_Vc8oAuqokj3PXiWxn697ipo3HcV3nXLDyi4EQ7LLhXYcgxXRhheWPly3DpdYz5ed2fi4GneKz4wp5XSP8ZMkCFUDFULezHiWGmIlUHQNz9Qi7S1tJm5pzYAHER5XEaiX1WK1Imn7FLCf2cC_P136fzjNNI4Y622R2RQVQH9teHv9zVSJtVXYNLMNkK7syPxDsUv" },
-    { id: 3, name: "Puma Deviate Nitro 2", rating: 4.5, reviews: 42, price: 160, img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDu1JoPBUJgvl5yAZ3hO7Fhi0BfXZGi0j44ne-4CFvC7AEOXCPD3enRYSqsIrTSSmcurKgrxEW27dUBZ-BEOat0Ve4S3Y_A1crW7HSTc5_gqtKahhxlaUpmDYrlA3O8roJZbC2MvuaiqMu_-GkUsCwj6dwZyuwsJGuxpHk8owfyo_m7CH4VpUUe4pO2mcTax2KkTv8CCz6Y5l74TU3lC7k1o2VTeARCwAhgCJEWfTLEIgWlwwPpyoQ6dUbLmvALOfNkXoyCKTYK0ldM" },
-    { id: 4, name: "New Balance Fresh Foam X", rating: 4.7, reviews: 56, price: 149.99, img: "https://lh3.googleusercontent.com/aida-public/AB6AXuABWPXdEaKJxpPqru_HtrWbIN3XpyAwlWpiGepq3Pwx-kWzRDVf466uo6ed934xrhlD19cRKz_ANyW8bSqk-tZYeH8rkDyXzWfRC0uEekpUhHh3fJDdLeOJuZiFvLNBvi-rT-56S3Eaov2R392ZUkei3DgO-FjGwLh0N2YHo-seS0yd1tpZ874lT-wlKhXvJoZiOxrXVkV-pUKZ-VWGOVfpAfdwBFwmvd17eexOQVzwYXTiLmbMen77JJiB9zFpU07qTgeVZpszVppr" }
-  ]
+  const { paginatedProducts, currentPage, setCurrentPage, totalPages, toggleFavorite, isFavorite, addToCart, setSelectedCategory, selectedCategory, setSearchQuery, filteredProducts, cartCount } = useStore()
+  const [filters, setFilters] = useState({ running: true, training: false, walking: false, trail: false })
+  const [searchParams] = useSearchParams()
+  const [localSearch, setLocalSearch] = useState('')
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const searchQuery = searchParams.get('search')
+    const category = searchParams.get('category')
+    if (searchQuery) {
+      setSearchQuery(searchQuery)
+      setLocalSearch(searchQuery)
+    }
+    if (category) {
+      setSelectedCategory(category)
+    }
+  }, [searchParams, setSearchQuery, setSelectedCategory])
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    if (localSearch.trim()) {
+      navigate(`/catalog?search=${encodeURIComponent(localSearch.trim())}`)
+    }
+  }
+
+  const handleFilterChange = (key) => {
+    setFilters(prev => ({ ...prev, [key]: !prev[key] }))
+  }
 
   return (
     <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col transition-colors duration-200">
@@ -19,14 +43,21 @@ const CatalogScreen = () => {
               </div>
               <h2 className="text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white">ShopEase</h2>
             </Link>
-            <div className="hidden md:flex flex-1 max-w-lg">
+            <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-lg">
               <div className="relative w-full group">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <span className="material-symbols-outlined text-slate-400">search</span>
                 </div>
-                <input className="block w-full pl-10 pr-3 py-2 border-none rounded-lg leading-5 bg-background-light dark:bg-background-dark text-slate-900 dark:text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm" placeholder="Search for products..." type="text" />
+                <input 
+                  value={localSearch}
+                  onChange={(e) => setLocalSearch(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
+                  className="block w-full pl-10 pr-3 py-2 border-none rounded-lg leading-5 bg-background-light dark:bg-background-dark text-slate-900 dark:text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm" 
+                  placeholder="Search for products..." 
+                  type="text" 
+                />
               </div>
-            </div>
+            </form>
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <Link to="/login" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold bg-primary text-white hover:bg-blue-600 transition-colors shadow-sm">
@@ -34,7 +65,9 @@ const CatalogScreen = () => {
                 </Link>
                 <Link to="/cart" className="relative p-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark text-slate-700 dark:text-slate-200 transition-colors">
                   <span className="material-symbols-outlined">shopping_cart</span>
-                  <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white ring-2 ring-white dark:ring-[#1a2632]">2</span>
+                  {cartCount > 0 && (
+                    <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white ring-2 ring-white dark:ring-[#1a2632]">{cartCount}</span>
+                  )}
                 </Link>
               </div>
             </div>
@@ -48,15 +81,15 @@ const CatalogScreen = () => {
             <div className="sticky top-24 space-y-8">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">Filters</h3>
-                <button className="text-sm text-primary font-medium hover:underline">Clear All</button>
+                <button onClick={() => { setFilters({ running: false, training: false, walking: false, trail: false }); setSelectedCategory('all'); setSearchQuery(''); navigate('/catalog') }} className="text-sm text-primary font-medium hover:underline">Clear All</button>
               </div>
               <div className="space-y-3">
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Categories</h4>
                 <div className="flex flex-col space-y-2">
-                  {['Running Shoes', 'Training & Gym', 'Walking', 'Trail Running'].map((cat, i) => (
+                  {[{ key: 'running', label: 'Running Shoes' }, { key: 'training', label: 'Training & Gym' }, { key: 'walking', label: 'Walking' }, { key: 'trail', label: 'Trail Running' }].map(({ key, label }, i) => (
                     <label key={i} className="inline-flex items-center cursor-pointer group">
-                      <input className="form-checkbox h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary dark:bg-background-dark dark:border-slate-600" type="checkbox" defaultChecked={i === 0} />
-                      <span className="ml-3 text-sm text-slate-600 dark:text-slate-300 group-hover:text-primary transition-colors">{cat}</span>
+                      <input onChange={() => handleFilterChange(key)} className="form-checkbox h-5 w-5 text-primary border-slate-300 rounded focus:ring-primary dark:bg-background-dark dark:border-slate-600" type="checkbox" checked={filters[key]} />
+                      <span className="ml-3 text-sm text-slate-600 dark:text-slate-300 group-hover:text-primary transition-colors">{label}</span>
                     </label>
                   ))}
                 </div>
@@ -67,33 +100,33 @@ const CatalogScreen = () => {
           <main className="flex-1 min-w-0">
             <div className="mb-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Men's Running Shoes</h1>
-                <span className="text-slate-500 dark:text-slate-400 text-sm font-medium">Showing 1-12 of 145 results</span>
+                <h1 className="text-3xl font-bold text-slate-900 dark:text-white">{searchParams.get('search') ? `Search results for "${searchParams.get('search')}"` : 'All Products'}</h1>
+                <span className="text-slate-500 dark:text-slate-400 text-sm font-medium">Showing {filteredProducts.length} results</span>
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {products.map(product => (
+              {paginatedProducts.map(product => (
                 <div key={product.id} className="group relative bg-white dark:bg-[#1a2632] rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
                   <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-200">
-                    <img alt={product.name} className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src={product.img} />
+                    <img alt={product.name} className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src={product.image} />
                     {product.badge && (
                       <div className="absolute top-2 left-2 flex flex-col gap-1">
                         <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ${product.badge === 'Sale' ? 'bg-red-50 text-red-700 ring-1 ring-inset ring-red-600/10' : 'bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10'}`}>{product.badge}</span>
                       </div>
                     )}
                     <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full transition-transform duration-300 group-hover:translate-y-0 bg-gradient-to-t from-black/60 to-transparent flex justify-center gap-3">
-                      <button className="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
-                        <span className="material-symbols-outlined text-[20px]">favorite</span>
+                      <button onClick={() => toggleFavorite(product.id)} className="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+                        <span className={`material-symbols-outlined text-[20px] ${isFavorite(product.id) ? 'filled text-red-500' : ''}`}>favorite</span>
                       </button>
-                      <button className="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
+                      <Link to={`/product/${product.id}`} className="bg-white text-slate-900 p-2 rounded-full hover:text-primary transition-colors shadow-lg">
                         <span className="material-symbols-outlined text-[20px]">visibility</span>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                   <div className="p-4">
                     <h3 className="text-base font-bold text-slate-900 dark:text-white line-clamp-2 mb-1">
-                      <Link to="/product/1">{product.name}</Link>
+                      <Link to={`/product/${product.id}`}>{product.name}</Link>
                     </h3>
                     <div className="flex items-center gap-1 mb-2">
                       <span className="material-symbols-outlined filled text-amber-400 text-[16px]">star</span>
@@ -103,9 +136,9 @@ const CatalogScreen = () => {
                     <div className="flex items-end justify-between">
                       <div className="flex flex-col">
                         {product.oldPrice && <span className="text-xs text-slate-500 line-through">${product.oldPrice}.00</span>}
-                        <span className="text-lg font-bold text-primary">${product.price}</span>
+                        <span className="text-lg font-bold text-primary">${typeof product.price === 'number' ? product.price.toFixed(2) : product.price}</span>
                       </div>
-                      <button className="bg-primary hover:bg-blue-600 text-white p-2 rounded-lg transition-colors shadow-sm">
+                      <button onClick={() => addToCart(product.id)} className="bg-primary hover:bg-blue-600 text-white p-2 rounded-lg transition-colors shadow-sm">
                         <span className="material-symbols-outlined text-[20px]">add_shopping_cart</span>
                       </button>
                     </div>
@@ -116,17 +149,15 @@ const CatalogScreen = () => {
 
             <div className="mt-12 flex justify-center">
               <nav className="flex items-center gap-2">
-                <a className="p-2 rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+                <button onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} disabled={currentPage === 1} className="p-2 rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed">
                   <span className="material-symbols-outlined text-sm">arrow_back</span>
-                </a>
-                <a className="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold shadow-sm" href="#">1</a>
-                <a className="px-4 py-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition-colors text-sm font-medium" href="#">2</a>
-                <a className="px-4 py-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition-colors text-sm font-medium" href="#">3</a>
-                <span className="px-2 text-slate-400">...</span>
-                <a className="px-4 py-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition-colors text-sm font-medium" href="#">12</a>
-                <a className="p-2 rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+                </button>
+                {[...Array(totalPages)].map((_, i) => (
+                  <button key={i} onClick={() => setCurrentPage(i + 1)} className={`px-4 py-2 rounded-lg text-sm font-bold ${currentPage === i + 1 ? 'bg-primary text-white shadow-sm' : 'border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800'} transition-colors`}>{i + 1}</button>
+                ))}
+                <button onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))} disabled={currentPage === totalPages} className="p-2 rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed">
                   <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
+                </button>
               </nav>
             </div>
           </main>

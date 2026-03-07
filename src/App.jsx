@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ThemeProvider } from './contexts/ThemeContext'
+import { StoreProvider } from './contexts/StoreContext'
 import Homepage from './pages/Homepage'
 import LoginPage from './pages/LoginPage'
 import ProductDetailPage from './pages/ProductDetailPage'
@@ -24,32 +26,36 @@ import DisputeDetailsPage from './pages/DisputeDetailsPage'
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/product/:id" element={<ProductDetailPage />} />
-        <Route path="/cart" element={<ShoppingCart />} />
-        <Route path="/catalog" element={<CatalogScreen />} />
-        <Route path="/orders" element={<OrderHistoryPage />} />
-        <Route path="/order/:id" element={<OrderDetailsScreen />} />
-        <Route path="/payment" element={<PaymentSelectionPage />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/support" element={<CustomerSupportPage />} />
-        <Route path="/recommendations" element={<AIProductRecommendations />} />
-        <Route path="/product-management" element={<ProductManagement />} />
-        <Route path="/order-management" element={<OrderManagement />} />
-        <Route path="/user-management" element={<UserManagement />} />
-        <Route path="/category-management" element={<CategoryManagement />} />
-        <Route path="/dispute-management" element={<DisputeManagement />} />
-        <Route path="/dispute-resolution" element={<DisputeResolutionPage />} />
-        <Route path="/admin-settings" element={<AdminSettings />} />
-        <Route path="/product/edit/:id" element={<EditProductScreen />} />
-        <Route path="/user/edit/:id" element={<EditUserScreen />} />
-        <Route path="/dispute/:id" element={<DisputeDetailsPage />} />
-      </Routes>
-    </Router>
+    <ThemeProvider>
+      <StoreProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegistrationPage />} />
+            <Route path="/product/:id" element={<ProductDetailPage />} />
+            <Route path="/cart" element={<ShoppingCart />} />
+            <Route path="/catalog" element={<CatalogScreen />} />
+            <Route path="/orders" element={<OrderHistoryPage />} />
+            <Route path="/order/:id" element={<OrderDetailsScreen />} />
+            <Route path="/payment" element={<PaymentSelectionPage />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/support" element={<CustomerSupportPage />} />
+            <Route path="/recommendations" element={<AIProductRecommendations />} />
+            <Route path="/product-management" element={<ProductManagement />} />
+            <Route path="/order-management" element={<OrderManagement />} />
+            <Route path="/user-management" element={<UserManagement />} />
+            <Route path="/category-management" element={<CategoryManagement />} />
+            <Route path="/dispute-management" element={<DisputeManagement />} />
+            <Route path="/dispute-resolution" element={<DisputeResolutionPage />} />
+            <Route path="/admin-settings" element={<AdminSettings />} />
+            <Route path="/product/edit/:id" element={<EditProductScreen />} />
+            <Route path="/user/edit/:id" element={<EditUserScreen />} />
+            <Route path="/dispute/:id" element={<DisputeDetailsPage />} />
+          </Routes>
+        </Router>
+      </StoreProvider>
+    </ThemeProvider>
   )
 }
 

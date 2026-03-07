@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useStore } from '../contexts/StoreContext'
 
 const ShoppingCart = () => {
-  const cartItems = [
-    { id: 1, name: "MacBook Pro 14\"", desc: "Space Grey, 512GB SSD, M3 Pro Chip", price: 1999, qty: 1, img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCm9BHdpnBOTaKYg-6mkOPPuciHc27taasELb2CNrvnKW58i6t4HNt2mZurjw-yRjd0QoiMQdWzywTYfBY2cSumCF94fKDqCtIcXd9-uqt3Ntkyd5X-7gnNMfAXmygXl1zuNcbBrNuqk4Z4a495typAc0lnDKHTugcvKfiellXjep3_JDyGImLX27NOaj5UAWgEaH_9EC_wkgFmJKGZWHzySgk5hXx3TAiOf67gzJXfUTzU_eqTit-PA32qhGK22k9qISj2odGhjaTb" },
-    { id: 2, name: "iPhone 15 Pro Case", desc: "Midnight Blue, Silicone, MagSafe Compatible", price: 49, qty: 1, img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD1a3WxAiq5KXrU0Uji7EuaAaFEq5IgF_UhNgORRTUEnOv4jTho5HYq7qXi3-qO7bBQunXI6uJB32VeOYSbiWVRa4a9x6Y_2ZmujQ_7LcJzcyz-sZCDT1QynPPOrVVfFkfd4l_BVzlUmnA3TnoYXdNoiTLuuVIK0sp-5NCtf3qmxXSA1uuNQPitcxG0B42zVWFYrWOHZOIEb45imMl-qQUBbvkqRRyYMCxAo04mEp94aHTGPE3pMtnzK5YF8HZLfgCd50YS1PGaBjgi" },
-    { id: 3, name: "USB-C Hub", desc: "7-in-1 Adapter, 4K HDMI, 100W PD", price: 89, qty: 1, img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBW5_wKoPKv1iK5UqVj4WI6i9LUPFiGX71f3KB_R6qjCx5HoVL7bqvK4h8Wa3DE0aemZ4Pdn361HwdHeUeFfZzWg7o1CE6VXjGyaBAVpMhC0bvijFbhTue6WE3QEAh5_i9ZBlbMpxTlD3v1fE6arEN1zSjSdBk511wAEeFqZxLUUkmeqr3dX98H3ChOoilZfzAb_HC-V_2REJjk-SrQ_A2uZ_nRDH0IAeTVfHcmOKNMX5g06Rt69_Lckf4GG0beoZTUAZ4WzqFsHc8Q" }
-  ]
+  const { cart, updateCartQuantity, removeFromCart } = useStore()
+
+  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
 
   return (
     <div className="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
@@ -23,33 +22,33 @@ const ShoppingCart = () => {
       <main className="flex-1 flex justify-center py-6 md:py-10 px-4 md:px-10">
         <div className="layout-content-container flex flex-col max-w-[1200px] flex-1">
           <div className="flex flex-wrap justify-between gap-3 p-4 mb-2">
-            <h1 className="text-[#111418] dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">Your Shopping Cart ({cartItems.length} Items)</h1>
+            <h1 className="text-[#111418] dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">Your Shopping Cart ({cart.length} Items)</h1>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8 px-4">
             <div className="flex-1 flex flex-col gap-6">
-              {cartItems.map(item => (
+              {cart.map(item => (
                 <div key={item.id} className="flex flex-col sm:flex-row gap-4 bg-white dark:bg-[#1a232e] p-4 rounded-xl shadow-sm border border-[#f0f2f4] dark:border-[#2a3642]">
                   <div className="shrink-0">
-                    <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-24 sm:size-32" style={{backgroundImage: `url("${item.img}")`}}></div>
+                    <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-24 sm:size-32" style={{backgroundImage: `url("${item.image}")`}}></div>
                   </div>
                   <div className="flex flex-1 flex-col justify-between">
                     <div className="flex justify-between items-start gap-2">
                       <div>
                         <h3 className="text-[#111418] dark:text-white text-lg font-bold leading-tight">{item.name}</h3>
-                        <p className="text-[#617589] dark:text-gray-400 text-sm mt-1">{item.desc}</p>
+                        <p className="text-[#617589] dark:text-gray-400 text-sm mt-1">{item.category}</p>
                       </div>
                       <p className="text-[#111418] dark:text-white text-lg font-bold">${item.price}.00</p>
                     </div>
                     <div className="flex justify-between items-end mt-4">
-                      <button className="text-[#617589] dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 text-sm font-medium flex items-center gap-1 transition-colors">
+                      <button onClick={() => removeFromCart(item.id)} className="text-[#617589] dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 text-sm font-medium flex items-center gap-1 transition-colors">
                         <span className="material-symbols-outlined text-lg">delete</span>
                         Remove
                       </button>
                       <div className="flex items-center gap-1 bg-[#f0f2f4] dark:bg-[#2b3540] rounded-lg p-1">
-                        <button className="size-8 flex items-center justify-center rounded-md bg-white dark:bg-[#1a232e] text-[#111418] dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-[#344050] transition-colors font-bold">-</button>
-                        <input className="w-10 p-0 text-center bg-transparent border-none text-[#111418] dark:text-white text-sm font-bold focus:ring-0" type="number" value={item.qty} readOnly />
-                        <button className="size-8 flex items-center justify-center rounded-md bg-primary text-white shadow-sm hover:bg-blue-600 transition-colors font-bold">+</button>
+                        <button onClick={() => updateCartQuantity(item.id, item.quantity - 1)} className="size-8 flex items-center justify-center rounded-md bg-white dark:bg-[#1a232e] text-[#111418] dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-[#344050] transition-colors font-bold">-</button>
+                        <input className="w-10 p-0 text-center bg-transparent border-none text-[#111418] dark:text-white text-sm font-bold focus:ring-0" type="number" value={item.quantity} readOnly />
+                        <button onClick={() => updateCartQuantity(item.id, item.quantity + 1)} className="size-8 flex items-center justify-center rounded-md bg-primary text-white shadow-sm hover:bg-blue-600 transition-colors font-bold">+</button>
                       </div>
                     </div>
                   </div>
@@ -70,7 +69,7 @@ const ShoppingCart = () => {
                 <div className="space-y-3 pb-6 border-b border-[#f0f2f4] dark:border-[#2a3642]">
                   <div className="flex justify-between text-[#617589] dark:text-gray-400 text-sm">
                     <span>Subtotal</span>
-                    <span className="text-[#111418] dark:text-white font-medium">$2,137.00</span>
+                    <span className="text-[#111418] dark:text-white font-medium">${subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-[#617589] dark:text-gray-400 text-sm">
                     <span>Shipping estimate</span>
@@ -83,9 +82,9 @@ const ShoppingCart = () => {
                 </div>
                 <div className="flex justify-between items-center py-6">
                   <span className="text-[#111418] dark:text-white text-lg font-bold">Order Total</span>
-                  <span className="text-[#111418] dark:text-white text-2xl font-black">$2,137.00</span>
+                  <span className="text-[#111418] dark:text-white text-2xl font-black">${subtotal.toFixed(2)}</span>
                 </div>
-                <Link to="/payment" className="w-full bg-primary hover:bg-blue-600 text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-blue-500/30 transition-all active:scale-[0.98]">
+                <Link to="/payment" className="block w-full text-center bg-primary hover:bg-blue-600 text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-blue-500/30 transition-all active:scale-[0.98]">
                   Proceed to Checkout
                 </Link>
                 <div className="mt-6 flex flex-col items-center gap-3">

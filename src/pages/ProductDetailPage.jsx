@@ -1,6 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { useStore } from '../contexts/StoreContext'
+import ThemeToggle from '../components/ThemeToggle'
+import { useState } from 'react'
 
 const ProductDetailPage = () => {
+  const { id } = useParams()
+  const { getProduct, addToCart, cartCount, toggleFavorite, isFavorite } = useStore()
+  const product = getProduct(id)
+  const [quantity, setQuantity] = useState(1)
+  const [activeTab, setActiveTab] = useState('description')
+
+  if (!product) {
+    return <div className="min-h-screen flex items-center justify-center">Product not found</div>
+  }
+
   return (
     <div className="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-gray-100 min-h-screen flex flex-col">
       <header className="sticky top-0 z-50 bg-white dark:bg-[#1a242f] border-b border-gray-200 dark:border-gray-800">
@@ -20,12 +33,15 @@ const ProductDetailPage = () => {
               <Link className="text-sm font-medium hover:text-primary transition-colors" to="/catalog">New Arrivals</Link>
             </nav>
             <div className="flex gap-2">
+              <ThemeToggle />
               <Link to="/login" className="flex items-center justify-center rounded-lg size-10 bg-slate-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                 <span className="material-symbols-outlined text-[20px]">person</span>
               </Link>
               <Link to="/cart" className="relative flex items-center justify-center rounded-lg size-10 bg-slate-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                 <span className="material-symbols-outlined text-[20px]">shopping_cart</span>
-                <span className="absolute top-1 right-1 size-2 bg-red-500 rounded-full"></span>
+                {cartCount > 0 && (
+                  <span className="absolute top-1 right-1 size-2 bg-red-500 rounded-full"></span>
+                )}
               </Link>
             </div>
           </div>
@@ -36,35 +52,37 @@ const ProductDetailPage = () => {
         <div className="flex flex-wrap items-center gap-2 mb-8 text-sm">
           <Link className="text-slate-500 dark:text-gray-400 font-medium hover:text-primary" to="/">Home</Link>
           <span className="material-symbols-outlined text-xs text-slate-500">chevron_right</span>
-          <span className="text-[#111418] dark:text-white font-semibold">Wireless Headphones X1</span>
+          <span className="text-[#111418] dark:text-white font-semibold">{product.name}</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-16">
           <div className="lg:col-span-7 flex flex-col gap-4">
             <div className="relative w-full aspect-square md:aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 group">
-              <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuB44B8AT9-OMi_8I4ovHl1tHCPuT-zJJzxzX5AFywiSCIsBaMpoTCHSVbWzZOrrbSjo6cgbpfa1mYivdLvOCT37IB-fgnmjyEESWNQsjm6Fs44UUlob1SXKk49pWiKWYjKbU8hI2sZONRHAmOYQCb-NaHhh3if3uxh9jX5Ow8qm76xHvpXjpNaJl1tHMAd0T4fxsTh1FFi4KzoHxFEsInaVR-9tizQRTiaOleB-bwYAVezKUl1m8vfKsCnFDlmLxEJqm1KI2tvquiC_')"}}></div>
-              <div className="absolute top-4 left-4">
-                <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">SALE -20%</span>
-              </div>
+              <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style={{backgroundImage: `url('${product.image}')`}}></div>
+              {product.badge && (
+                <div className="absolute top-4 left-4">
+                  <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">{product.badge}</span>
+                </div>
+              )}
             </div>
           </div>
 
           <div className="lg:col-span-5 flex flex-col h-full">
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#111418] dark:text-white mb-2">Wireless Noise Cancelling Headphones X1</h1>
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#111418] dark:text-white mb-2">{product.name}</h1>
             <div className="flex items-center gap-4 mb-6">
               <div className="flex items-center gap-0.5 text-amber-400">
-                {[...Array(5)].map((_, i) => (
+                {[...Array(product.rating || 5)].map((_, i) => (
                   <span key={i} className="material-symbols-outlined text-lg fill-current">star</span>
                 ))}
               </div>
-              <a className="text-sm font-medium text-primary hover:underline" href="#reviews">4.8 (24 Reviews)</a>
+              <span className="text-sm font-medium text-primary">{product.rating || 5} ({product.reviews || 0} Reviews)</span>
             </div>
             <div className="flex items-end gap-3 mb-6">
-              <p className="text-4xl font-bold text-[#111418] dark:text-white">$299.00</p>
-              <p className="text-lg text-slate-500 line-through mb-1.5">$375.00</p>
+              <p className="text-4xl font-bold text-[#111418] dark:text-white">${typeof product.price === 'number' ? product.price.toFixed(2) : product.price}</p>
+              {product.oldPrice && <p className="text-lg text-slate-500 line-through mb-1.5">${product.oldPrice.toFixed(2)}</p>}
             </div>
             <p className="text-slate-500 dark:text-gray-300 leading-relaxed mb-8">
-              Experience industry-leading noise cancellation with the X1. Featuring 30-hour battery life, premium comfort for long listening sessions, and crystal-clear calls.
+              {product.name} - Premium quality product with excellent features and performance. Perfect for your needs.
             </p>
 
             <div className="space-y-6 border-t border-b border-gray-100 dark:border-gray-800 py-6 mb-6">
@@ -81,20 +99,23 @@ const ProductDetailPage = () => {
             <div className="flex flex-col gap-4 mb-8">
               <div className="flex gap-4">
                 <div className="flex items-center border border-gray-200 dark:border-gray-700 rounded-lg h-12 bg-white dark:bg-[#1a242f]">
-                  <button className="px-3 h-full text-slate-500 hover:text-primary transition-colors">
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3 h-full text-slate-500 hover:text-primary transition-colors">
                     <span className="material-symbols-outlined text-sm">remove</span>
                   </button>
-                  <input className="w-12 text-center border-none bg-transparent focus:ring-0 font-bold p-0 text-[#111418] dark:text-white" readOnly type="text" value="1" />
-                  <button className="px-3 h-full text-slate-500 hover:text-primary transition-colors">
+                  <input className="w-12 text-center border-none bg-transparent focus:ring-0 font-bold p-0 text-[#111418] dark:text-white" readOnly type="text" value={quantity} />
+                  <button onClick={() => setQuantity(quantity + 1)} className="px-3 h-full text-slate-500 hover:text-primary transition-colors">
                     <span className="material-symbols-outlined text-sm">add</span>
                   </button>
                 </div>
-                <button className="flex-1 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg h-12 flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 transition-all active:scale-[0.98]">
+                <button 
+                  onClick={() => { addToCart(product.id, quantity); setQuantity(1) }}
+                  className="flex-1 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg h-12 flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 transition-all active:scale-[0.98]"
+                >
                   <span className="material-symbols-outlined">shopping_bag</span>
                   Add to Cart
                 </button>
-                <button className="h-12 w-12 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                  <span className="material-symbols-outlined">favorite</span>
+                <button onClick={() => toggleFavorite(product.id)} className="h-12 w-12 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                  <span className={`material-symbols-outlined ${isFavorite(product.id) ? 'filled text-red-500' : ''}`}>favorite</span>
                 </button>
               </div>
             </div>
@@ -123,22 +144,47 @@ const ProductDetailPage = () => {
         <div className="mt-16 lg:mt-24">
           <div className="border-b border-gray-200 dark:border-gray-800 mb-8">
             <nav className="flex gap-8 overflow-x-auto">
-              <button className="pb-4 border-b-2 border-primary text-primary font-bold whitespace-nowrap px-1">Description</button>
-              <button className="pb-4 border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white font-medium whitespace-nowrap px-1 transition-colors">Specifications</button>
-              <button className="pb-4 border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white font-medium whitespace-nowrap px-1 transition-colors">Shipping & Returns</button>
+              <button onClick={() => setActiveTab('description')} className={`pb-4 border-b-2 ${activeTab === 'description' ? 'border-primary text-primary' : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'} font-bold whitespace-nowrap px-1 transition-colors`}>Description</button>
+              <button onClick={() => setActiveTab('specifications')} className={`pb-4 border-b-2 ${activeTab === 'specifications' ? 'border-primary text-primary' : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'} font-medium whitespace-nowrap px-1 transition-colors`}>Specifications</button>
+              <button onClick={() => setActiveTab('shipping')} className={`pb-4 border-b-2 ${activeTab === 'shipping' ? 'border-primary text-primary' : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'} font-medium whitespace-nowrap px-1 transition-colors`}>Shipping & Returns</button>
             </nav>
           </div>
           <div className="max-w-4xl text-slate-900 dark:text-gray-300 leading-7">
-            <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Immersive Sound Quality</h3>
-            <p className="mb-6">The Wireless Headphones X1 are engineered to deliver a superior audio experience. Whether you are commuting, working, or relaxing at home, our advanced noise-cancelling technology blocks out the world so you can focus on your music.</p>
-            <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">All-Day Comfort</h3>
-            <p className="mb-6">Designed with soft memory foam ear cups and a lightweight headband, these headphones provide exceptional comfort for extended wear. The foldable design makes them easy to pack and carry wherever you go.</p>
-            <ul className="list-disc pl-5 space-y-2 text-slate-500 dark:text-gray-400">
-              <li>Active Noise Cancelling (ANC)</li>
-              <li>30-hour battery life with quick charge</li>
-              <li>Bluetooth 5.2 connectivity</li>
-              <li>Built-in microphone for clear calls</li>
-            </ul>
+            {activeTab === 'description' && (
+              <>
+                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Immersive Sound Quality</h3>
+                <p className="mb-6">The Wireless Headphones X1 are engineered to deliver a superior audio experience. Whether you are commuting, working, or relaxing at home, our advanced noise-cancelling technology blocks out the world so you can focus on your music.</p>
+                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">All-Day Comfort</h3>
+                <p className="mb-6">Designed with soft memory foam ear cups and a lightweight headband, these headphones provide exceptional comfort for extended wear. The foldable design makes them easy to pack and carry wherever you go.</p>
+                <ul className="list-disc pl-5 space-y-2 text-slate-500 dark:text-gray-400">
+                  <li>Active Noise Cancelling (ANC)</li>
+                  <li>30-hour battery life with quick charge</li>
+                  <li>Bluetooth 5.2 connectivity</li>
+                  <li>Built-in microphone for clear calls</li>
+                </ul>
+              </>
+            )}
+            {activeTab === 'specifications' && (
+              <>
+                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Technical Specifications</h3>
+                <ul className="space-y-2">
+                  <li><strong>Driver Size:</strong> 40mm</li>
+                  <li><strong>Frequency Response:</strong> 20Hz - 20kHz</li>
+                  <li><strong>Impedance:</strong> 32 Ohm</li>
+                  <li><strong>Battery Life:</strong> 30 hours (ANC on), 40 hours (ANC off)</li>
+                  <li><strong>Charging Time:</strong> 2 hours (USB-C fast charging)</li>
+                  <li><strong>Weight:</strong> 250g</li>
+                </ul>
+              </>
+            )}
+            {activeTab === 'shipping' && (
+              <>
+                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Shipping Information</h3>
+                <p className="mb-4">Free standard shipping on orders over $50. Express shipping available at checkout.</p>
+                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Returns Policy</h3>
+                <p>30-day money-back guarantee. Items must be in original condition with all packaging.</p>
+              </>
+            )}
           </div>
         </div>
 
